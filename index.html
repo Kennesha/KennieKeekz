@@ -30,21 +30,92 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-.cta {
-    display: inline-block;
-    background: linear-gradient(45deg, #ff6b81, #ff3b60);
-    color: white;
-    padding: 12px 24px;
-    font-size: 18px;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink CTA Button</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+            background-color: #fff0f5; /* Light blush pink */
+            margin-top: 100px;
+        }
 
-.cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 4px 10px rgba(255, 107, 129, 0.4);
-}
+        /* Main CTA Button */
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b81, #ff3b60);
+            color: white;
+            padding: 14px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 4px 10px rgba(255, 107, 129, 0.4);
+        }
+
+        /* Dropdown Menu */
+        .cta-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 10px 0;
+        }
+
+        .cta-menu a {
+            display: block;
+            padding: 12px;
+            color: #ff3b60;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s ease;
+        }
+
+        .cta-menu a:hover {
+            background: #ffe0e6;
+            border-radius: 8px;
+        }
+
+        /* Show Dropdown on Click */
+        .cta-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta-container:hover .cta-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cta-container">
+        <button class="cta-button">💖 More About Me</button>
+        <div class="cta-menu">
+            <a href="Kennesha Holder-Barrett Resume Feb 2025.pdf" download>📄 Download Resume</a>
+            <a href="mailto:Kennesha.holder1632@gmail.com">📧 Contact Me</a>
+            <a href="https://www.linkedin.com/in/kholder-barrett/" target="_blank">🔗 LinkedIn</a>
+        </div>
+    </div>
+
+</body>
+</html>
+
 
 
 
