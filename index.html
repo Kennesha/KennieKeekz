@@ -287,6 +287,98 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 </body>
 </html>
 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        /* Apply cursor to the entire body */
+        body {
+            cursor: url('https://files.catbox.moe/s12ofg.cur'), auto;
+        }
+
+        /* Apply cursor specifically to buttons */
+        button {
+            cursor: url('https://files.catbox.moe/s12ofg.cur'), auto;
+        }
+
+        /* Style for your button */
+        button {
+            background-color: pink;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Add a hover effect for buttons */
+        button:hover {
+            background-color: darkpink;
+        }
+
+        /* Sparkle trail container */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ff66b2; /* Pink sparkle color */
+            opacity: 0;
+            pointer-events: none;
+            animation: sparkle 0.3s forwards;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1></h1>
+    <p></p>
+
+    <!-- Button for testing cursor -->
+    <button>Click Me</button>
+    <button>Another Button</button>
+
+    <script>
+        // JavaScript to create the sparkly trail effect
+        document.addEventListener("mousemove", function(event) {
+            let sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            document.body.appendChild(sparkle);
+
+            // Set position for the sparkles to follow the cursor
+            sparkle.style.left = `${event.pageX - 5}px`; // Centering the sparkle on cursor
+            sparkle.style.top = `${event.pageY - 5}px`;
+
+            // Remove the sparkle after animation
+            setTimeout(() => {
+                sparkle.remove();
+            }, 300); // Duration of the sparkle animation
+        });
+    </script>
+
+</body>
+</html>
+
+
+
     
 
 <script src="https://cdn.jsdelivr.net/gh/tholman/cursor-effects@latest/dist/browser.js"></script>
