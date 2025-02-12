@@ -207,6 +207,56 @@
 
 
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framed Picture</title>
+    <style>
+        /* Frame Styling */
+        .image-frame {
+            width: 250px; /* Adjust size */
+            padding: 15px; /* Space inside frame */
+            border: 8px solid #ff69b4; /* Hot pink border */
+            border-radius: 20px; /* Soft rounded edges */
+            background: linear-gradient(45deg, #ffb6c1, #ff69b4, #ff1493); /* Gradient pink */
+            box-shadow: 0px 0px 15px 5px rgba(255, 105, 180, 0.8); /* Pink glow effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto; /* Centering */
+        }
+
+        /* Image Styling */
+        .image-frame img {
+            width: 100%; /* Makes the image fit the frame */
+            border-radius: 15px; /* Rounds the image inside */
+        }
+
+        /* Optional: Cute sparkly animation */
+        @keyframes sparkle {
+            0% { box-shadow: 0px 0px 10px 3px rgba(255, 105, 180, 0.5); }
+            50% { box-shadow: 0px 0px 20px 6px rgba(255, 105, 180, 1); }
+            100% { box-shadow: 0px 0px 10px 3px rgba(255, 105, 180, 0.5); }
+        }
+        
+        .image-frame:hover {
+            animation: sparkle 1.5s infinite alternate; /* Glowy sparkle effect */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-frame">
+        <img src="https://i.ibb.co/NdYbmL41/peace-sign-grad-2024.jpg" alt="Peace Sign Grad 2024">
+    </div>
+
+</body>
+</html>
+
+    
 <img src="https://i.ibb.co/NdYbmL41/peace-sign-grad-2024.jpg" alt="Peace Sign Grad 2024" style="width: 200px; border-radius: 10px;">
 
 
