@@ -213,10 +213,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Framed Picture</title>
+    <title>Cute Framed Picture</title>
     <style>
-        /* Frame Styling */
-        .image-frame {
+        /* Container for image and decorations */
+        .frame-container {
+            position: relative;
             width: 250px; /* Adjust size */
             padding: 15px; /* Space inside frame */
             border: 8px solid #ff69b4; /* Hot pink border */
@@ -230,31 +231,62 @@
         }
 
         /* Image Styling */
-        .image-frame img {
+        .frame-container img {
             width: 100%; /* Makes the image fit the frame */
             border-radius: 15px; /* Rounds the image inside */
         }
 
-        /* Optional: Cute sparkly animation */
+        /* Bows & Hearts Decorations */
+        .bow, .heart, .hello-kitty {
+            position: absolute;
+            width: 50px; /* Adjust size */
+        }
+
+        .bow {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .heart {
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hello-kitty {
+            width: 60px;
+            top: -20px;
+            right: -20px;
+        }
+
+        /* Sparkly Animation */
         @keyframes sparkle {
             0% { box-shadow: 0px 0px 10px 3px rgba(255, 105, 180, 0.5); }
             50% { box-shadow: 0px 0px 20px 6px rgba(255, 105, 180, 1); }
             100% { box-shadow: 0px 0px 10px 3px rgba(255, 105, 180, 0.5); }
         }
         
-        .image-frame:hover {
+        .frame-container:hover {
             animation: sparkle 1.5s infinite alternate; /* Glowy sparkle effect */
         }
     </style>
 </head>
 <body>
 
-    <div class="image-frame">
+    <div class="frame-container">
+        <!-- Image inside the frame -->
         <img src="https://i.ibb.co/NdYbmL41/peace-sign-grad-2024.jpg" alt="Peace Sign Grad 2024">
+
+        <!-- Decorations: Bow, Heart, Hello Kitty -->
+        <img class="bow" src="https://i.ibb.co/m0x43dK/pink-bow.png" alt="Pink Bow">
+        <img class="heart" src="https://i.ibb.co/ynZGJ02/pink-heart.png" alt="Pink Heart">
+        <img class="hello-kitty" src="https://i.ibb.co/7bFTVGh/hello-kitty.png" alt="Hello Kitty">
     </div>
 
 </body>
 </html>
+
 
     
 <img src="https://i.ibb.co/NdYbmL41/peace-sign-grad-2024.jpg" alt="Peace Sign Grad 2024" style="width: 200px; border-radius: 10px;">
