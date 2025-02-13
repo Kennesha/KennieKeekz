@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Girlie 💖</title>
+    <title>Data Girlie <3</title>
     <style>
         /* General Styling */
         body {
@@ -18,12 +18,26 @@
         .welcome {
             background: linear-gradient(45deg, #ff85a2, #ff6699, #ff99cc);
             color: white;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.8);
             border-bottom: 5px solid #ff4d6d;
             position: relative;
+        }
+
+        .welcome::after {
+            content: "✨";
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            animation: sparkle 1.5s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
         }
 
         /* About Me Section */
@@ -41,7 +55,7 @@
 
         .about-me h2 {
             color: #ff4d6d;
-            font-size: 22px;
+            font-size: 24px;
         }
 
         .about-me p {
@@ -49,37 +63,11 @@
             font-size: 16px;
         }
 
-        /* Project Section */
-        .projects-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .project-card {
-            width: 280px;
-            background: white;
-            border: 4px solid #ff1493;
-            border-radius: 15px;
-            padding: 10px;
-            text-align: center;
-            box-shadow: 0px 0px 10px #ff69b4;
-        }
-
-        .project-card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        /* Buttons (Side-by-Side but Stacking on Mobile) */
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
+        /* Links Section */
+        .cta-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 40px;
         }
 
         .cta-button {
@@ -100,46 +88,125 @@
             box-shadow: 0 6px 15px rgba(255, 105, 180, 0.8);
         }
 
-        /* Fun Facts Section */
-        .fun-facts {
-            background: linear-gradient(135deg, #ff99cc, #ff66b2);
-            color: white;
-            padding: 15px;
+        /* Dropdown for Links */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
             border-radius: 15px;
-            box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
-            width: 250px;
-            text-align: center;
-            font-weight: bold;
-            margin: 30px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            width: 200px;
+            text-align: left;
         }
 
-        /* Responsive Design */
+        .dropdown a {
+            display: block;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: #ff4d6d;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .dropdown a:hover {
+            background: #ffe6ea;
+            color: #ff0055;
+        }
+
+        .cta-container:hover .dropdown {
+            display: block;
+        }
+
+        /* Button Container for Side-by-Side Buttons */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .cta-button, .projects-button {
+            background: linear-gradient(45deg, #ff85a2, #ff6699, #ff99cc);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cta-button:hover, .projects-button:hover {
+            background: linear-gradient(45deg, #ff6699, #ff85a2, #ff99cc);
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.8);
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .welcome {
-                font-size: 22px;
-                padding: 20px;
-            }
-
-            .about-me {
-                width: 90%;
-            }
-
-            .projects-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .project-card {
-                width: 90%;
-            }
-
+            /* Make the buttons stack vertically */
             .button-container {
                 flex-direction: column;
             }
 
-            .cta-button {
-                width: 90%;
+            /* Adjust the welcome banner font size for smaller screens */
+            .welcome {
+                font-size: 24px;
+                padding: 20px;
             }
+
+            /* Adjust the about section width */
+            .about-me {
+                width: 90%;
+                padding: 15px;
+            }
+
+            /* Make the dropdown fit smaller screens */
+            .dropdown {
+                width: 100%;
+            }
+
+            /* Ensure the image is responsive */
+            .image-frame img {
+                width: 100%;
+            }
+        }
+
+        /* Sparkle effect for image frame */
+        .image-frame {
+            width: 250px;
+            padding: 15px;
+            border: 8px solid #ff69b4;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #ffb6c1, #ff69b4, #ff1493);
+            box-shadow: 0px 0px 15px 5px rgba(255, 105, 180, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+        }
+
+        .image-frame img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        @keyframes sparkle {
+            0% { box-shadow: 0px 0px 10px 3px rgba(255, 105, 180, 0.5); }
+            50% { box-shadow: 0px 0px 20px 6px rgba(255, 105, 180, 1); }
+            100% { box-shadow: 0px 0px 10px 3px rgba(255, 105, 180, 0.5); }
+        }
+
+        .image-frame:hover {
+            animation: sparkle 1.5s infinite alternate;
         }
     </style>
 </head>
@@ -150,44 +217,50 @@
         🎀 Welcome to My Portfolio! 🎀
     </div>
 
+    <!-- Cute Banner -->
+    <div class="cute-banner">
+        I'm just a girly girl that loves data (& pink!) 💖✨
+    </div>
+
+    <!-- Image Frame -->
+    <div class="image-frame">
+        <img src="https://i.ibb.co/NdYbmL41/peace-sign-grad-2024.jpg" alt="Peace Sign Grad 2024">
+    </div>
+
     <!-- About Me Section -->
     <div class="about-me">
         <h2>💖 About Me 💖</h2>
-        <p>Hi, I'm Kennesha! A passionate health informatics & data intelligence enthusiast.  
-           I love working with data, business intelligence, and research. Let’s connect and create something magical! ✨</p>
+        <p>Hi, I'm Kennesha! A passionate health informatics & data intelligence enthusiast!  
+           I love working with data, business intelligence, and research. I’m a recent graduate with a Bachelor’s in Health Informatics from Georgia State University (May 2024) with an Associate’s in Business Technology from Gwinnett Technical College (July 2021). I was lucky enough to be part of the Phi Theta Kappa Honor Society, which inspired me to always aim high and put my best foot forward in everything I do.
+
+Though I’m just starting my career, I’m excited to apply what I’ve learned about data analysis, medical records management, compliance, and reporting in real-world settings. I’ve gained hands-on experience with tools like SQL, Power BI, Tableau, EPIC, Alteryx, and Microsoft Office—all of which I’m eager to dive deeper into. I’m the type of person who loves solving problems and finding better ways to do things, and I’m always up for a challenge.
+As I continue to grow in the field, I’m committed to learning, gaining experience, and eventually pursuing my master’s degree to sharpen my skills further. My goal is to contribute to any team I’m part of and to keep improving as I take on new opportunities.  
+           Let's connect and create something magical! ✨</p>
     </div>
 
-    <!-- Project Section -->
-    <h2>📂 My Projects 📂</h2>
-    <div class="projects-container">
-        <div class="project-card">
-            <img src="https://i.ibb.co/NdYbmL41/peace-sign-grad-2024.jpg" alt="Project 1">
-            <p>📊 Data Analytics Project</p>
-            <a href="https://ibb.co/xt96LL3Q" target="_blank">View Project</a>
-        </div>
-        <div class="project-card">
-            <img src="https://i.ibb.co/NdYbmL41/peace-sign-grad-2024.jpg" alt="Project 2">
-            <p>📄 Work Breakdown Structure</p>
-            <a href="Work-Breakdown-Structure.pdf" download>Download PDF</a>
-        </div>
-    </div>
-
-    <!-- Button Section (Connect & Projects) -->
+    <!-- Side-by-Side Buttons -->
     <div class="button-container">
-        <a href="mailto:kennesha.holder1632@gmail.com" class="cta-button">📧 Contact Me</a>
-        <a href="https://www.linkedin.com/in/kholder-barrett/" class="cta-button" target="_blank">🔗 LinkedIn</a>
+        <button class="cta-button">💖 Let's Connect!</button>
+        <button class="projects-button">🎀 My Projects 🎀</button>
     </div>
 
-    <!-- Fun Facts Section -->
-    <div class="fun-facts">
+    <!-- Fun Facts -->
+    <div class="fun-facts-frame">
         <h2>💖 Fun Facts 💖</h2>
         <ul>
             <li>I love Hello Kitty & pink aesthetics 🎀</li>
             <li>Huge fan of data & health informatics 📊</li>
             <li>Coffee & matcha addict ☕💚</li>
             <li>Love coding & making cute designs 💻✨</li>
+            <li>🌟 I love learning new things every day!</li>
+            <li>🎨 My favorite color is blush pink (obviously)! 💖</li>
+            <li>📚 I’m a huge fan of reading.</li>
+            <li>💻 I love tackling new challenges in health informatics and business data management.</li>
+            <li>🌟 I’m always excited to learn new tools and software to keep growing in my career!</li>
+            <li>🎶 I played flute for 7 years and was also in marching band!</li>
         </ul>
     </div>
 
 </body>
 </html>
+
