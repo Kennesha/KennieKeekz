@@ -568,6 +568,9 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
+
+
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -587,20 +590,22 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
         /* Fun Facts Section */
         .fun-facts-section {
-            width: 90%;
-            max-width: 500px; /* Keeps it from getting too wide */
+            width: 80%;
+            max-width: 350px; /* Smaller, tighter frame */
             margin: 20px auto; /* Center the section */
-            padding: 20px;
-            background: linear-gradient(135deg, #ff99cc, #ff66b2); /* Pink gradient */
-            border: 5px solid #ff3399; /* Cute pink border */
+            padding: 15px;
+            background: linear-gradient(135deg, #ff4da6, #ff1a75); /* Brighter pink gradient */
+            border: 5px solid #ff0066; /* Bold pink border */
             border-radius: 20px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6); /* Pink glow effect */
+            box-shadow: 0 0 15px rgba(255, 0, 102, 0.7); /* Stronger pink glow */
+            position: relative; /* Needed for bow placement */
         }
 
         .fun-facts-section h2 {
-            font-size: 22px;
+            font-size: 20px;
             color: white;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+            margin-bottom: 15px;
         }
 
         .fun-facts-section ul {
@@ -609,9 +614,21 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         }
 
         .fun-facts-section li {
-            font-size: 16px;
+            font-size: 14px;
             color: white;
-            margin: 8px 0;
+            margin: 6px 0;
+        }
+
+        /* Cute Bow Decoration */
+        .bow {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 40px;
+            background: url('https://i.imgur.com/L7N0A0E.png') no-repeat center;
+            background-size: contain;
         }
     </style>
 </head>
@@ -619,6 +636,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
     <!-- Fun Facts Section -->
     <div class="fun-facts-section">
+        <div class="bow"></div> <!-- Bow on top -->
         <h2>💖 Fun Facts 💖</h2>
         <ul>
             <li>I love Hello Kitty & pink aesthetics 🎀</li>
