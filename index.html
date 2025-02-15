@@ -491,6 +491,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -501,23 +502,24 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* Fun Facts Frame */
         .fun-facts-frame {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 250px;
-            padding: 15px;
+            top: 100px; /* Adjust how far from the top of the screen */
+            right: 20px; /* Position it on the right side */
+            width: 180px; /* Make the section smaller */
+            padding: 10px; /* Smaller padding */
             background: linear-gradient(135deg, #ff99cc, #ff66b2); /* Pink gradient */
             border: 5px solid #ff3399; /* Cute pink frame */
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6); /* Pink glow effect */
+            border-radius: 15px; /* Smaller rounded corners */
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.6); /* Pink glow effect */
             color: white;
             font-family: "Arial", sans-serif;
             text-align: center;
             font-weight: bold;
+            z-index: 100;
         }
 
         .fun-facts-frame h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 16px; /* Smaller font size */
+            margin-bottom: 8px;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
         }
 
@@ -527,15 +529,14 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         }
 
         .fun-facts-frame li {
-            font-size: 14px;
-            margin: 5px 0;
+            font-size: 12px; /* Smaller font size */
+            margin: 4px 0;
         }
     </style>
 </head>
 <body>
 
-
-
+    <!-- Fun Facts Section -->
     <div class="fun-facts-frame">
         <h2>💖 Fun Facts 💖</h2>
         <ul>
@@ -553,7 +554,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 </body>
 </html>
-
 
 
 
