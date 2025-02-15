@@ -592,7 +592,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .fun-facts-section {
             width: 80%;
             max-width: 350px; /* Keeps it tightly wrapped */
-            margin: 40px auto 20px auto; /* Added space at the top */
+            margin: 50px auto 20px auto; /* Space for the bow */
             padding: 15px;
             background: linear-gradient(135deg, #ffb6e6, #ff85c2); /* Brighter pink gradient */
             border: 5px solid #ff66b2; /* Lighter, cuter pink */
@@ -622,13 +622,16 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* Cute Bow Decoration */
         .bow {
             position: absolute;
-            top: -20px;
+            top: -30px; /* Higher above the box */
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 40px;
-            background: url('https://i.imgur.com/aYvO1QH.png') no-repeat center;
-            background-size: contain;
+            width: 80px; /* Make the bow larger */
+            height: 50px;
+        }
+
+        .bow img {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
@@ -636,7 +639,9 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
     <!-- Fun Facts Section -->
     <div class="fun-facts-section">
-        <div class="bow"></div> <!-- Cute bow at the top -->
+        <div class="bow">
+            <img src="https://i.imgur.com/Lh9ttB9.png" alt="Cute Pink Bow">
+        </div>
         <h2>💖 Fun Facts 💖</h2>
         <ul>
             <li>I love Hello Kitty & pink aesthetics 🎀</li>
@@ -653,6 +658,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 </body>
 </html>
+
 
 
 
