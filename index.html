@@ -497,74 +497,165 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-
-
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title>My Degrees & Certifications 🎓</title>
     <style>
-        /* Body Styling */
+        /* General Styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Arial", sans-serif;
             background-color: #ffe6f2;
+            text-align: center;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
 
-        /* Reason for This Site Section */
-        .reason-section {
-            background-color: #ffeff9;
+        /* Section Styling */
+        .degrees-container {
+            background: white;
             width: 80%;
             max-width: 700px;
             margin: 40px auto;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+            border: 3px solid #ff99cc;
+            text-align: center;
         }
 
-        .reason-section h2 {
-            font-size: 24px;
+        .degrees-container h2 {
             color: #ff4d6d;
-            margin-bottom: 10px;
+            font-size: 24px;
         }
 
-        .reason-section p {
-            font-size: 16px;
+        .degree {
+            display: flex;
+            align-items: center;
+            background: #ffe6f2;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+            text-align: left;
+        }
+
+        .degree img {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+
+        .degree-info {
+            text-align: left;
+        }
+
+        .degree-info h3 {
+            color: #ff3399;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .degree-info p {
+            font-size: 14px;
             color: #555;
-            line-height: 1.5;
+            margin: 0;
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive Styling */
         @media (max-width: 768px) {
-            .reason-section {
+            .degrees-container {
                 width: 90%;
-                padding: 15px;
             }
 
-            .reason-section h2 {
-                font-size: 20px;
+            .degree {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
 
-            .reason-section p {
-                font-size: 14px;
+            .degree img {
+                margin-bottom: 10px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Reason for This Site Section -->
-    <div class="reason-section">
-        <h2>The Reason for This Site</h2>
-        <p>I created this site to challenge myself and improve my skills. It also serves as a portfolio to show employers my work and ongoing projects. The goal is to balance professionalism with a personal touch.</p>
+    <!-- Degrees & Certifications Section -->
+    <div class="degrees-container">
+        <h2>🎓 My Degrees & Certifications 🎓</h2>
+
+        <div class="degree">
+            <a href="https://ibb.co/d4xvxYvs"><img src="https://i.ibb.co/s9z4zY4p/Bachelors-degree.png" alt="Bachelors-degree" border="0"></a>
+            <div class="degree-info">
+                <h3>Bachelor’s in Health Informatics</h3>
+                <p>Georgia State University - May 2024</p>
+            </div>
+        </div>
+
+        <div class="degree">
+            <a href="https://ibb.co/6JBGDDHp"><img src="https://i.ibb.co/mF8dhh9Y/AAS-degree.jpg" alt="AAS-degree" border="0"></a>
+            <div class="degree-info">
+                <h3>Associate’s in Business Technology</h3>
+                <p>Gwinnett Technical College - July 2021</p>
+            </div>
+        </div>
+
+         <div class="degree">
+            <a href="https://ibb.co/v67LvxTr"><img src="https://i.ibb.co/hJP21R4n/Bus-Tech-Dip.jpg" alt="Bus-Tech-Dip" border="0"></a>
+            <div class="degree-info">
+                <h3>Business Technology Diploma</h3>
+                <p>Gwinnett Technical College</p>
+            </div>
+        </div>
+        
+        <div class="degree">
+            <a href="https://ibb.co/6cThXz6X"><img src="https://i.ibb.co/8nf3YqFY/PTK-Cert.jpg" alt="PTK-Cert" border="0"></a>
+            <div class="degree-info">
+                <h3>Phi Theta Kappa Honor Society</h3>
+                <p>Member since 2021</p>
+            </div>
+        </div>
+        
+        <div class="degree">
+            <a href="https://ibb.co/KxTBDJsf"><img src="https://i.ibb.co/wh587fQP/TCC-in-Med-Front-Off-Assist.jpg" alt="TCC-in-Med-Front-Off-Assist" border="0"></a>
+            <div class="degree-info">
+                <h3>Technical Certificate in Medical Front Office Assistant</h3>
+                <p>Gwinnett Technical College</p>
+            </div>
+        </div>
+
+        <div class="degree">
+            <a href="https://ibb.co/21L11RNv"><img src="https://i.ibb.co/G4144GTW/TCC-in-Microsoft-Off-Apps.jpg" alt="TCC-in-Microsoft-Off-Apps" border="0"></a>
+            <div class="degree-info">
+                <h3>Technical Certificate in Microsoft Office Apps</h3>
+                <p>Gwinnett Technical College</p>
+            </div>
+        </div>
+
+         <div class="degree">
+            <a href="https://ibb.co/RpFsKGv5"><img src="https://i.ibb.co/yn9ZCmf3/TCC-in-Admin-Supp-Assist.jpg" alt="TCC-in-Admin-Supp-Assist" border="0"></a>
+            <div class="degree-info">
+                <h3>Technical Certificate in Administrative Support Assistant</h3>
+                <p>Gwinnett Technical College</p>
+            </div>
+        </div>
+        
     </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
@@ -881,161 +972,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Degrees & Certifications 🎓</title>
-    <style>
-        /* General Styling */
-        body {
-            font-family: "Arial", sans-serif;
-            background-color: #ffe6f2;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Section Styling */
-        .degrees-container {
-            background: white;
-            width: 80%;
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
-            border: 3px solid #ff99cc;
-            text-align: center;
-        }
-
-        .degrees-container h2 {
-            color: #ff4d6d;
-            font-size: 24px;
-        }
-
-        .degree {
-            display: flex;
-            align-items: center;
-            background: #ffe6f2;
-            padding: 15px;
-            border-radius: 15px;
-            margin: 10px 0;
-            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
-            text-align: left;
-        }
-
-        .degree img {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
-            border-radius: 10px;
-        }
-
-        .degree-info {
-            text-align: left;
-        }
-
-        .degree-info h3 {
-            color: #ff3399;
-            font-size: 18px;
-            margin: 5px 0;
-        }
-
-        .degree-info p {
-            font-size: 14px;
-            color: #555;
-            margin: 0;
-        }
-
-        /* Responsive Styling */
-        @media (max-width: 768px) {
-            .degrees-container {
-                width: 90%;
-            }
-
-            .degree {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .degree img {
-                margin-bottom: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Degrees & Certifications Section -->
-    <div class="degrees-container">
-        <h2>🎓 My Degrees & Certifications 🎓</h2>
-
-        <div class="degree">
-            <a href="https://ibb.co/d4xvxYvs"><img src="https://i.ibb.co/s9z4zY4p/Bachelors-degree.png" alt="Bachelors-degree" border="0"></a>
-            <div class="degree-info">
-                <h3>Bachelor’s in Health Informatics</h3>
-                <p>Georgia State University - May 2024</p>
-            </div>
-        </div>
-
-        <div class="degree">
-            <a href="https://ibb.co/6JBGDDHp"><img src="https://i.ibb.co/mF8dhh9Y/AAS-degree.jpg" alt="AAS-degree" border="0"></a>
-            <div class="degree-info">
-                <h3>Associate’s in Business Technology</h3>
-                <p>Gwinnett Technical College - July 2021</p>
-            </div>
-        </div>
-
-         <div class="degree">
-            <a href="https://ibb.co/v67LvxTr"><img src="https://i.ibb.co/hJP21R4n/Bus-Tech-Dip.jpg" alt="Bus-Tech-Dip" border="0"></a>
-            <div class="degree-info">
-                <h3>Business Technology Diploma</h3>
-                <p>Gwinnett Technical College</p>
-            </div>
-        </div>
-        
-        <div class="degree">
-            <a href="https://ibb.co/6cThXz6X"><img src="https://i.ibb.co/8nf3YqFY/PTK-Cert.jpg" alt="PTK-Cert" border="0"></a>
-            <div class="degree-info">
-                <h3>Phi Theta Kappa Honor Society</h3>
-                <p>Member since 2021</p>
-            </div>
-        </div>
-        
-        <div class="degree">
-            <a href="https://ibb.co/KxTBDJsf"><img src="https://i.ibb.co/wh587fQP/TCC-in-Med-Front-Off-Assist.jpg" alt="TCC-in-Med-Front-Off-Assist" border="0"></a>
-            <div class="degree-info">
-                <h3>Technical Certificate in Medical Front Office Assistant</h3>
-                <p>Gwinnett Technical College</p>
-            </div>
-        </div>
-
-        <div class="degree">
-            <a href="https://ibb.co/21L11RNv"><img src="https://i.ibb.co/G4144GTW/TCC-in-Microsoft-Off-Apps.jpg" alt="TCC-in-Microsoft-Off-Apps" border="0"></a>
-            <div class="degree-info">
-                <h3>Technical Certificate in Microsoft Office Apps</h3>
-                <p>Gwinnett Technical College</p>
-            </div>
-        </div>
-
-         <div class="degree">
-            <a href="https://ibb.co/RpFsKGv5"><img src="https://i.ibb.co/yn9ZCmf3/TCC-in-Admin-Supp-Assist.jpg" alt="TCC-in-Admin-Supp-Assist" border="0"></a>
-            <div class="degree-info">
-                <h3>Technical Certificate in Administrative Support Assistant</h3>
-                <p>Gwinnett Technical College</p>
-            </div>
-        </div>
-        
-    </div>
-
-</body>
-</html>
-
-
-
 
 
 
@@ -1115,218 +1051,4 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Section</title>
-    <style>
-        /* Games Section Styling */
-        .games-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-
-        .game-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
-            border: 3px solid #ff99cc;
-            width: 320px;
-        }
-
-        canvas {
-            border: 3px solid #ff99cc;
-            background: black; /* Changed to black */
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            background: #ff66b2;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #ff3399;
-        }
-
-        .score {
-            font-size: 18px;
-            font-weight: bold;
-            color: #ff3399;
-            margin-top: 10px;
-        }
-
-        /* Responsive Layout */
-        @media (max-width: 700px) {
-            .games-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Games Section -->
-    <div class="games-container">
-        <!-- Snake Game -->
-        <div class="game-box">
-            <h2>🐍 Snake Game</h2>
-            <canvas id="snakeGame" width="300" height="300"></canvas>
-            <button onclick="startSnakeGame()">Start Snake</button>
-            <div id="snakeScore" class="score">Score: 0</div>
-        </div>
-
-        <!-- Ping Pong Game -->
-        <div class="game-box">
-            <h2>🏓 Ping Pong</h2>
-            <canvas id="pingPongGame" width="300" height="300"></canvas>
-            <button onclick="startPingPongGame()">Start Ping Pong</button>
-            <div id="pingPongScore" class="score">Score: 0</div>
-        </div>
-    </div>
-
-    <script>
-        /* MOUSE-CONTROLLED SNAKE GAME */
-        let snakeInterval;
-        let snakeScore = 0;
-
-        function startSnakeGame() {
-            clearInterval(snakeInterval);
-            const canvas = document.getElementById("snakeGame");
-            const ctx = canvas.getContext("2d");
-
-            let snake = [{x: 150, y: 150}];
-            let food = { x: Math.floor(Math.random() * 20) * 15, y: Math.floor(Math.random() * 20) * 15 };
-            let target = { x: 150, y: 150 }; // Mouse movement target
-
-            canvas.addEventListener("mousemove", (event) => {
-                let rect = canvas.getBoundingClientRect();
-                target.x = event.clientX - rect.left;
-                target.y = event.clientY - rect.top;
-            });
-
-            function update() {
-                let head = { x: snake[0].x, y: snake[0].y };
-
-                // Move towards the mouse
-                let dx = target.x - head.x;
-                let dy = target.y - head.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance > 5) {
-                    head.x += (dx / distance) * 15;
-                    head.y += (dy / distance) * 15;
-                }
-
-                snake.unshift(head);
-                if (Math.abs(head.x - food.x) < 15 && Math.abs(head.y - food.y) < 15) {
-                    food = { x: Math.floor(Math.random() * 20) * 15, y: Math.floor(Math.random() * 20) * 15 };
-                    snakeScore++; // Increase score when the snake eats food
-                    document.getElementById("snakeScore").textContent = `Score: ${snakeScore}`; // Update score display
-                } else {
-                    snake.pop();
-                }
-
-                if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300) {
-                    clearInterval(snakeInterval);
-                    alert("Game Over! Try Again.");
-                }
-            }
-
-            function draw() {
-                ctx.fillStyle = "black";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "green";
-                snake.forEach((part) => ctx.fillRect(part.x, part.y, 15, 15));
-                ctx.fillStyle = "red";
-                ctx.fillRect(food.x, food.y, 15, 15);
-            }
-
-            function gameLoop() {
-                update();
-                draw();
-            }
-
-            snakeInterval = setInterval(gameLoop, 150);
-        }
-
-        /* PING PONG GAME */
-        let pongInterval;
-        let pongScore = 0;
-
-        function startPingPongGame() {
-            clearInterval(pongInterval);
-            const canvas = document.getElementById("pingPongGame");
-            const ctx = canvas.getContext("2d");
-
-            let paddle = { x: 90, y: 280, width: 120, height: 10 }; // Longer Paddle
-            let ball = { x: 150, y: 150, radius: 5, dx: 3, dy: 3 };
-
-            document.addEventListener("mousemove", (event) => {
-                let rect = canvas.getBoundingClientRect();
-                paddle.x = event.clientX - rect.left - paddle.width / 2;
-                if (paddle.x < 0) paddle.x = 0;
-                if (paddle.x + paddle.width > canvas.width) paddle.x = canvas.width - paddle.width;
-            });
-
-            function update() {
-                ball.x += ball.dx;
-                ball.y += ball.dy;
-
-                if (ball.x < 0 || ball.x > canvas.width) ball.dx *= -1;
-                if (ball.y < 0) ball.dy *= -1;
-
-                if (
-                    ball.y > paddle.y &&
-                    ball.x > paddle.x &&
-                    ball.x < paddle.x + paddle.width
-                ) {
-                    ball.dy *= -1;
-                    pongScore++; // Increase score when the ball hits the paddle
-                    document.getElementById("pingPongScore").textContent = `Score: ${pongScore}`; // Update score display
-                }
-
-                if (ball.y > canvas.height) {
-                    clearInterval(pongInterval);
-                    alert("Game Over! Try Again.");
-                }
-            }
-
-            function draw() {
-                ctx.fillStyle = "black";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "blue";
-                ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
-                ctx.fillStyle = "red";
-                ctx.beginPath();
-                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            function gameLoop() {
-                update();
-                draw();
-            }
-
-            pongInterval = setInterval(gameLoop, 20);
-        }
-    </script>
-
-</body>
-</html>
 
