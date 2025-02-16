@@ -1075,7 +1075,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
         canvas {
             border: 3px solid #ff99cc;
-            background: #fefefe;
+            background: black; /* Changed to black */
         }
 
         button {
@@ -1122,7 +1122,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     </div>
 
     <script>
-        /* SNAKE GAME */
+        /* SNAKE GAME (Mouse-Controlled) */
         let snakeInterval;
         function startSnakeGame() {
             clearInterval(snakeInterval);
@@ -1133,11 +1133,16 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             let direction = "RIGHT";
             let food = { x: Math.floor(Math.random() * 20) * 15, y: Math.floor(Math.random() * 20) * 15 };
 
-            document.addEventListener("keydown", (event) => {
-                if (event.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
-                else if (event.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
-                else if (event.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
-                else if (event.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+            canvas.addEventListener("click", (event) => {
+                let rect = canvas.getBoundingClientRect();
+                let clickX = event.clientX - rect.left;
+                let clickY = event.clientY - rect.top;
+                let head = snake[0];
+
+                if (clickX > head.x && direction !== "LEFT") direction = "RIGHT";
+                else if (clickX < head.x && direction !== "RIGHT") direction = "LEFT";
+                else if (clickY > head.y && direction !== "UP") direction = "DOWN";
+                else if (clickY < head.y && direction !== "DOWN") direction = "UP";
             });
 
             function update() {
@@ -1162,7 +1167,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             }
 
             function draw() {
-                ctx.fillStyle = "white";
+                ctx.fillStyle = "black";
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = "green";
                 snake.forEach((part) => ctx.fillRect(part.x, part.y, 15, 15));
@@ -1217,7 +1222,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             }
 
             function draw() {
-                ctx.fillStyle = "white";
+                ctx.fillStyle = "black";
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = "blue";
                 ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
@@ -1238,4 +1243,3 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 </body>
 </html>
-
