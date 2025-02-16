@@ -581,7 +581,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffc2e2; /* Soft pink background */
+            background-color: #ffe8ef; /* Soft blush pink background */
             color: #333;
             margin: 0;
             padding: 0;
@@ -599,16 +599,17 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
         /* Shared Box Styling */
         .box {
-            width: 230px;
-            padding: 15px;
-            background: radial-gradient(circle, #ff99cc, #ff66b2); /* Radiating Bright Blush Pink */
+            width: 240px;
+            padding: 18px;
+            background: radial-gradient(circle, #ffd9e6, #ffccdd); /* Soft blush pink gradient */
             border: 6px solid transparent;
             border-radius: 20px;
             position: relative;
-            box-shadow: 0 0 15px rgba(255, 20, 147, 0.6); /* Pink Glow */
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.8); /* Soft pink glow */
             color: white;
             font-weight: bold;
             text-align: center;
+            overflow: hidden;
         }
 
         /* Scalloped Border Effect */
@@ -619,7 +620,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             transform: translateX(-50%);
             width: 90%;
             height: 10px;
-            background: radial-gradient(circle, #ff99a8 25%, transparent 26%);
+            background: radial-gradient(circle, #ffb6c1 25%, transparent 26%);
             background-size: 10px 10px;
         }
 
@@ -630,6 +631,29 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .box:after {
             bottom: -10px;
         }
+
+        /* Sparkling Glitter Effect */
+        @keyframes sparkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white;
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        .sparkle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 30%; left: 80%; animation-delay: 0.3s; }
+        .sparkle:nth-child(3) { top: 50%; left: 40%; animation-delay: 0.6s; }
+        .sparkle:nth-child(4) { top: 70%; left: 60%; animation-delay: 0.9s; }
+        .sparkle:nth-child(5) { top: 90%; left: 30%; animation-delay: 1.2s; }
 
         /* Hello Kitty in Top Right Corner */
         .hello-kitty {
@@ -662,6 +686,12 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <p id="bible-verse"></p>
             <p id="bible-message"></p>
             <p id="bible-meaning"></p>
+            <!-- Sparkles -->
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
         </div>
 
         <!-- Positive Vibes -->
@@ -672,6 +702,12 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
             <p id="positive-vibe-4"></p>
+            <!-- Sparkles -->
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
         </div>
     </div>
 
@@ -687,16 +723,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
                 verse: "Jeremiah 29:11", 
                 message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", 
                 meaning: "💡 God has a good plan for your life—keep believing!" 
-            },
-            { 
-                verse: "Isaiah 41:10", 
-                message: "Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.", 
-                meaning: "💡 No matter what, you are never alone—God is always there to help!" 
-            },
-            { 
-                verse: "Philippians 4:13", 
-                message: "I can do all things through Christ who strengthens me.", 
-                meaning: "💡 With faith, you can overcome anything!" 
             }
         ];
 
@@ -706,38 +732,29 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             "🌟 Believe in yourself—you are enough just as you are. 🌸",
             "💖 Every challenge is an opportunity to grow stronger.",
             "💫 You have a light that the world needs—shine brightly!",
-            "🎀 Your dreams are valid, and you are capable of achieving them.",
-            "🌷 Difficult roads lead to beautiful destinations. Keep faith!",
-            "💖 Be kind to yourself. You are doing your best, and that’s amazing!",
-            "🌞 Each day is a fresh start—fill it with positivity and joy!",
-            "💡 The world needs your unique talents—never stop believing in yourself!",
-            "🌈 Happiness is found in the little moments—cherish them!"
         ];
 
         // Function to select verse & vibes based on the day
         function getDailyContent() {
             let date = new Date();
-            let index = date.getDate() % bibleVerses.length; // Rotates daily
+            let index = date.getDate() % bibleVerses.length;
             let vibeIndexes = [
                 (date.getDate() + 1) % positiveVibes.length, 
                 (date.getDate() + 2) % positiveVibes.length, 
                 (date.getDate() + 3) % positiveVibes.length, 
                 (date.getDate() + 4) % positiveVibes.length
-            ]; // Picks 4 different positive vibes
+            ];
 
-            // Set Bible Verse
             document.getElementById("bible-verse").innerHTML = `<strong>${bibleVerses[index].verse}</strong>`;
             document.getElementById("bible-message").innerText = bibleVerses[index].message;
             document.getElementById("bible-meaning").innerText = bibleVerses[index].meaning;
 
-            // Set Positive Vibes
             document.getElementById("positive-vibe-1").innerText = positiveVibes[vibeIndexes[0]];
             document.getElementById("positive-vibe-2").innerText = positiveVibes[vibeIndexes[1]];
             document.getElementById("positive-vibe-3").innerText = positiveVibes[vibeIndexes[2]];
             document.getElementById("positive-vibe-4").innerText = positiveVibes[vibeIndexes[3]];
         }
 
-        // Run function on page load
         getDailyContent();
     </script>
 
