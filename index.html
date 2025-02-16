@@ -599,35 +599,41 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
         /* Shared Box Styling */
         .box {
-            width: 220px;
+            width: 230px;
             padding: 15px;
-            background: #ddeeff; /* Softer baby blue */
-            border: 6px dotted #ff66b2; /* Cute pink dotted border */
-            border-radius: 20px; /* Rounded edges */
-            box-shadow: 0 0 12px rgba(255, 182, 193, 0.6); /* Soft pink glow */
+            background: #ffdab9; /* Soft Peach Color */
+            border: 6px solid transparent;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 0 12px rgba(255, 140, 105, 0.6); /* Soft Peach Glow */
             color: #333;
             font-weight: bold;
             text-align: center;
-            position: relative;
         }
 
-        /* Custom Heart Dots (Adding cute heart shapes) */
+        /* Scalloped Border Effect */
         .box:before {
-            content: "💕 💕 💕 💕";
+            content: "";
             position: absolute;
-            top: -15px;
+            top: -10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 12px;
+            width: 90%;
+            height: 10px;
+            background: radial-gradient(circle, #ff9b82 25%, transparent 26%);
+            background-size: 10px 10px;
         }
 
         .box:after {
-            content: "💕 💕 💕 💕";
+            content: "";
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 12px;
+            width: 90%;
+            height: 10px;
+            background: radial-gradient(circle, #ff9b82 25%, transparent 26%);
+            background-size: 10px 10px;
         }
 
         .box h2 {
@@ -731,6 +737,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 </body>
 </html>
+
 
 
 
