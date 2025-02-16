@@ -581,7 +581,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffb3e6; /* Brighter pink */
+            background-color: #ffc2e2; /* Brighter pink background */
             color: #333;
             margin: 0;
             padding: 0;
@@ -592,35 +592,22 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .section-container {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
-            padding: 20px;
+            padding: 15px;
         }
 
         /* Shared Box Styling */
         .box {
-            width: 220px;
+            width: 210px;
             padding: 12px;
-            background: linear-gradient(135deg, #ff99e6, #ff66cc); /* Bright pink gradient */
-            border: 4px dashed white; /* Cute dashed border */
-            border-radius: 25px; /* Softer, rounded edges */
-            box-shadow: 0 0 12px rgba(255, 182, 193, 0.6); /* Soft pink glow */
+            background: linear-gradient(135deg, #ff80d5, #ff66b2); /* Bright pink gradient */
+            border: 4px solid white; /* Soft white border */
+            border-radius: 18px; /* Rounded edges */
+            box-shadow: 0 0 10px rgba(255, 192, 203, 0.7); /* Soft pink glow */
             color: white;
             font-weight: bold;
             text-align: center;
-            position: relative;
-        }
-
-        /* Cute Scalloped Border Effect */
-        .box::before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 3px dotted #ff4da6; /* Dotted effect */
-            border-radius: 30px;
         }
 
         .box h2 {
@@ -630,7 +617,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         }
 
         .box p {
-            font-size: 13px;
+            font-size: 12px;
             margin: 5px 0;
         }
     </style>
@@ -652,6 +639,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <p id="positive-vibe-1"></p>
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
+            <p id="positive-vibe-4"></p>
         </div>
     </div>
 
@@ -690,7 +678,8 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             "🌷 Difficult roads lead to beautiful destinations. Keep faith!",
             "💖 Be kind to yourself. You are doing your best, and that’s amazing!",
             "🌞 Each day is a fresh start—fill it with positivity and joy!",
-            "💡 The world needs your unique talents—never stop believing in yourself!"
+            "💡 The world needs your unique talents—never stop believing in yourself!",
+            "🌈 Happiness is found in the little moments—cherish them!"
         ];
 
         // Function to select verse & vibes based on the day
@@ -700,8 +689,9 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             let vibeIndexes = [
                 (date.getDate() + 1) % positiveVibes.length, 
                 (date.getDate() + 2) % positiveVibes.length, 
-                (date.getDate() + 3) % positiveVibes.length
-            ]; // Picks 3 different positive vibes
+                (date.getDate() + 3) % positiveVibes.length, 
+                (date.getDate() + 4) % positiveVibes.length
+            ]; // Picks 4 different positive vibes
 
             // Set Bible Verse
             document.getElementById("bible-verse").innerHTML = `<strong>${bibleVerses[index].verse}</strong>`;
@@ -712,6 +702,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             document.getElementById("positive-vibe-1").innerText = positiveVibes[vibeIndexes[0]];
             document.getElementById("positive-vibe-2").innerText = positiveVibes[vibeIndexes[1]];
             document.getElementById("positive-vibe-3").innerText = positiveVibes[vibeIndexes[2]];
+            document.getElementById("positive-vibe-4").innerText = positiveVibes[vibeIndexes[3]];
         }
 
         // Run function on page load
