@@ -1045,111 +1045,183 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-        <!-- Snake Game Section -->
-        <div class="snake-game-container">
-            <h2>🎮 Snake Game 🎮</h2>
-            <canvas id="snakeCanvas" class="snake-canvas"></canvas>
-            <button class="start-button" onclick="startGame()">Start Game</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake & Ping Pong Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .games-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .game-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+            border: 3px solid #ff99cc;
+            text-align: center;
+            width: 320px;
+        }
+
+        canvas {
+            background: black;
+            display: block;
+            margin: 10px auto;
+            border: 2px solid #ff99cc;
+        }
+
+        .start-button {
+            background-color: #ff99cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .start-button:hover {
+            background-color: #ff66b2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎮 Snake & Ping Pong Game 🎮</h1>
+
+    <div class="games-container">
+        <!-- Snake Game -->
+        <div class="game-box">
+            <h2>🐍 Snake Game</h2>
+            <canvas id="snakeCanvas" width="300" height="300"></canvas>
+            <button class="start-button" onclick="startSnakeGame()">Start Snake</button>
+        </div>
+
+        <!-- Ping Pong Game -->
+        <div class="game-box">
+            <h2>🏓 Ping Pong</h2>
+            <canvas id="pingPongCanvas" width="300" height="300"></canvas>
+            <button class="start-button" onclick="startPingPong()">Start Ping Pong</button>
         </div>
     </div>
 
     <script>
-        // Snake Game JavaScript
+        // SNAKE GAME
+        const snakeCanvas = document.getElementById('snakeCanvas');
+        const snakeCtx = snakeCanvas.getContext('2d');
+        let snake, food, direction, snakeInterval;
 
-        const canvas = document.getElementById('snakeCanvas');
-        const ctx = canvas.getContext('2d');
-        const gridSize = 10;
-        const canvasSize = 300;
-
-        let snake = [{ x: 150, y: 150 }];
-        let food = { x: 0, y: 0 };
-        let direction = 'right';
-        let gameInterval;
-
-        function startGame() {
-            document.querySelector('.start-button').disabled = true;
-            document.querySelector('.start-button').textContent = 'Game Running...';
+        function startSnakeGame() {
             snake = [{ x: 150, y: 150 }];
             direction = 'right';
             generateFood();
-            gameInterval = setInterval(gameLoop, 100);
             document.addEventListener('keydown', changeDirection);
+            snakeInterval = setInterval(updateSnakeGame, 100);
         }
 
-        function gameLoop() {
-            moveSnake();
-            if (checkCollision()) {
-                endGame();
-            } else {
-                if (checkFoodCollision()) {
-                    snake.push({});
-                    generateFood();
-                }
-                drawGame();
-            }
-        }
-
-        function moveSnake() {
-            const head = { ...snake[0] };
-
+        function updateSnakeGame() {
+            let head = { ...snake[0] };
             switch (direction) {
-                case 'up': head.y -= gridSize; break;
-                case 'down': head.y += gridSize; break;
-                case 'left': head.x -= gridSize; break;
-                case 'right': head.x += gridSize; break;
+                case 'up': head.y -= 10; break;
+                case 'down': head.y += 10; break;
+                case 'left': head.x -= 10; break;
+                case 'right': head.x += 10; break;
             }
-
+            if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300 || snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+                clearInterval(snakeInterval);
+                alert('Game Over!');
+                return;
+            }
             snake.unshift(head);
-            snake.pop();
+            if (head.x === food.x && head.y === food.y) generateFood();
+            else snake.pop();
+            drawSnakeGame();
         }
 
-        function checkCollision() {
-            const head = snake[0];
-
-            if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) {
-                return true;
-            }
-
-            for (let i = 1; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        function checkFoodCollision() {
-            return snake[0].x === food.x && snake[0].y === food.y;
+        function changeDirection(event) {
+            const key = event.key;
+            if (key === 'ArrowUp' && direction !== 'down') direction = 'up';
+            if (key === 'ArrowDown' && direction !== 'up') direction = 'down';
+            if (key === 'ArrowLeft' && direction !== 'right') direction = 'left';
+            if (key === 'ArrowRight' && direction !== 'left') direction = 'right';
         }
 
         function generateFood() {
             food = {
-                x: Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize,
-                y: Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize
+                x: Math.floor(Math.random() * 30) * 10,
+                y: Math.floor(Math.random() * 30) * 10
             };
         }
 
-        function drawGame() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#00ff00'; 
-            for (const segment of snake) {
-                ctx.fillRect(segment.x, segment.y, gridSize, gridSize);
+        function drawSnakeGame() {
+            snakeCtx.clearRect(0, 0, 300, 300);
+            snakeCtx.fillStyle = '#00ff00';
+            snake.forEach(segment => snakeCtx.fillRect(segment.x, segment.y, 10, 10));
+            snakeCtx.fillStyle = '#ff0000';
+            snakeCtx.fillRect(food.x, food.y, 10, 10);
+        }
+
+        // PING PONG GAME
+        const pingCanvas = document.getElementById('pingPongCanvas');
+        const pingCtx = pingCanvas.getContext('2d');
+        let ball, paddle, ballSpeedX, ballSpeedY, gameInterval;
+
+        function startPingPong() {
+            ball = { x: 150, y: 150, radius: 10 };
+            paddle = { x: 120, y: 280, width: 60, height: 10 };
+            ballSpeedX = 3;
+            ballSpeedY = 3;
+            document.addEventListener('mousemove', movePaddle);
+            gameInterval = setInterval(updatePingPong, 30);
+        }
+
+        function updatePingPong() {
+            ball.x += ballSpeedX;
+            ball.y += ballSpeedY;
+            if (ball.x < 0 || ball.x > 290) ballSpeedX = -ballSpeedX;
+            if (ball.y < 0) ballSpeedY = -ballSpeedY;
+            if (ball.y > 270 && ball.x > paddle.x && ball.x < paddle.x + paddle.width) ballSpeedY = -ballSpeedY;
+            if (ball.y > 300) {
+                clearInterval(gameInterval);
+                alert('Game Over!');
+                return;
             }
-            ctx.fillStyle = '#ff0000';
-            ctx.fillRect(food.x, food.y, gridSize, gridSize);
+            drawPingPong();
         }
 
-        function endGame() {
-            clearInterval(gameInterval);
-            document.querySelector('.start-button').textContent = 'Game Over! Start Again';
-            alert('Game Over!');
+        function movePaddle(event) {
+            const rect = pingCanvas.getBoundingClientRect();
+            let mouseX = event.clientX - rect.left;
+            if (mouseX > 10 && mouseX < 230) {
+                paddle.x = mouseX - paddle.width / 2;
+            }
         }
 
-        canvas.width = canvasSize;
-        canvas.height = canvasSize;
+        function drawPingPong() {
+            pingCtx.clearRect(0, 0, 300, 300);
+            pingCtx.fillStyle = '#00ff00';
+            pingCtx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+            pingCtx.fillStyle = '#ff0000';
+            pingCtx.beginPath();
+            pingCtx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            pingCtx.fill();
+        }
     </script>
 
 </body>
 </html>
-
 
