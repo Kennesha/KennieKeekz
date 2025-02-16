@@ -582,10 +582,11 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
             background-color: #ffe8ef; /* Soft blush pink background */
-            color: #333;
+            color: black; /* Black font color for easier readability */
             margin: 0;
             padding: 0;
             text-align: center;
+            overflow: hidden; /* To hide overflowing sparkles */
         }
 
         /* Section Container */
@@ -595,6 +596,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             gap: 10px;
             flex-wrap: wrap;
             padding: 15px;
+            position: relative;
         }
 
         /* Shared Box Styling */
@@ -606,7 +608,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             border-radius: 20px;
             position: relative;
             box-shadow: 0 0 20px rgba(255, 182, 193, 0.8); /* Soft pink glow */
-            color: white;
+            color: black; /* Black font color */
             font-weight: bold;
             text-align: center;
             overflow: hidden;
@@ -658,6 +660,23 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .sparkle:nth-child(7) { top: 65%; left: 80%; animation-delay: 1.2s; }
         .sparkle:nth-child(8) { top: 75%; left: 90%; animation-delay: 1.4s; }
 
+        /* Extra Sparkles Around the Box */
+        .extra-sparkle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            animation: sparkle 1s infinite alternate;
+        }
+
+        .extra-sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .extra-sparkle:nth-child(2) { top: 20%; left: 90%; animation-delay: 0.2s; }
+        .extra-sparkle:nth-child(3) { top: 50%; left: 30%; animation-delay: 0.4s; }
+        .extra-sparkle:nth-child(4) { top: 60%; left: 70%; animation-delay: 0.6s; }
+        .extra-sparkle:nth-child(5) { top: 80%; left: 50%; animation-delay: 0.8s; }
+
         .box h2 {
             font-size: 16px;
             margin-bottom: 8px;
@@ -688,6 +707,12 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <div class="sparkle"></div>
             <div class="sparkle"></div>
             <div class="sparkle"></div>
+            <!-- Extra Sparkles Around the Box -->
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
         </div>
 
         <!-- Positive Vibes -->
@@ -706,6 +731,12 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <div class="sparkle"></div>
             <div class="sparkle"></div>
             <div class="sparkle"></div>
+            <!-- Extra Sparkles Around the Box -->
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
         </div>
     </div>
 
