@@ -1045,6 +1045,275 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degrees & Certifications 🎓</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #ffe6f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            flex-wrap: wrap;
+        }
+
+        /* Degrees & Certifications Styling */
+        .degrees-container {
+            background: white;
+            width: 45%;
+            max-width: 700px;
+            margin: 40px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+            border: 3px solid #ff99cc;
+            text-align: center;
+        }
+
+        .degrees-container h2 {
+            color: #ff4d6d;
+            font-size: 24px;
+        }
+
+        .degree {
+            display: flex;
+            align-items: center;
+            background: #ffe6f2;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+            text-align: left;
+        }
+
+        .degree img {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+
+        .degree-info {
+            text-align: left;
+        }
+
+        .degree-info h3 {
+            color: #ff3399;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .degree-info p {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Snake Game Styling */
+        .snake-game-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            width: 45%;
+            max-width: 600px;
+            margin: 40px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .snake-canvas {
+            background-color: #000;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #ff99cc;
+            width: 300px;
+            height: 300px;
+        }
+
+        .start-button {
+            background-color: #ff99cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .start-button:hover {
+            background-color: #ff66b2;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .degrees-container, .snake-game-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Degrees & Certifications Section -->
+    <div class="degrees-container">
+        <h2>🎓 My Degrees & Certifications 🎓</h2>
+
+        <div class="degree">
+            <a href="https://ibb.co/d4xvxYvs"><img src="https://i.ibb.co/s9z4zY4p/Bachelors-degree.png" alt="Bachelors-degree" border="0"></a>
+            <div class="degree-info">
+                <h3>Bachelor’s in Health Informatics</h3>
+                <p>Georgia State University - May 2024</p>
+            </div>
+        </div>
+
+        <div class="degree">
+            <a href="https://ibb.co/6JBGDDHp"><img src="https://i.ibb.co/mF8dhh9Y/AAS-degree.jpg" alt="AAS-degree" border="0"></a>
+            <div class="degree-info">
+                <h3>Associate’s in Business Technology</h3>
+                <p>Gwinnett Technical College - July 2021</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Snake Game Section -->
+    <div class="snake-game-container">
+        <h2>🎮 Snake Game 🎮</h2>
+        <canvas id="snakeCanvas" class="snake-canvas"></canvas>
+        <button class="start-button" onclick="startGame()">Start Game</button>
+    </div>
+
+    <script>
+        // Snake Game JavaScript
+
+        const canvas = document.getElementById('snakeCanvas');
+        const ctx = canvas.getContext('2d');
+        const gridSize = 10;
+        const canvasSize = 300;
+
+        let snake = [{ x: 150, y: 150 }];
+        let food = { x: 0, y: 0 };
+        let direction = 'right';
+        let gameInterval;
+
+        // Game functions
+        function startGame() {
+            document.querySelector('.start-button').disabled = true;
+            document.querySelector('.start-button').textContent = 'Game Running...';
+            snake = [{ x: 150, y: 150 }];
+            direction = 'right';
+            generateFood();
+            gameInterval = setInterval(gameLoop, 100);
+            document.addEventListener('keydown', changeDirection);
+        }
+
+        function gameLoop() {
+            moveSnake();
+            if (checkCollision()) {
+                endGame();
+            } else {
+                if (checkFoodCollision()) {
+                    snake.push({});
+                    generateFood();
+                }
+                drawGame();
+            }
+        }
+
+        function moveSnake() {
+            const head = { ...snake[0] };
+
+            switch (direction) {
+                case 'up':
+                    head.y -= gridSize;
+                    break;
+                case 'down':
+                    head.y += gridSize;
+                    break;
+                case 'left':
+                    head.x -= gridSize;
+                    break;
+                case 'right':
+                    head.x += gridSize;
+                    break;
+            }
+
+            snake.unshift(head);
+            snake.pop();
+        }
+
+        function checkCollision() {
+            const head = snake[0];
+
+            // Wall collision
+            if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) {
+                return true;
+            }
+
+            // Self collision
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function checkFoodCollision() {
+            const head = snake[0];
+            return head.x === food.x && head.y === food.y;
+        }
+
+        function generateFood() {
+            food = {
+                x: Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize,
+                y: Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize
+            };
+        }
+
+        function drawGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff00'; // Snake color
+            for (const segment of snake) {
+                ctx.fillRect(segment.x, segment.y, gridSize, gridSize);
+            }
+
+            ctx.fillStyle = '#ff0000'; // Food color
+            ctx.fillRect(food.x, food.y, gridSize, gridSize);
+        }
+
+        function changeDirection(event) {
+            if (event.key === 'ArrowUp' && direction !== 'down') {
+                direction = 'up';
+            } else if (event.key === 'ArrowDown' && direction !== 'up') {
+                direction = 'down';
+            } else if (event.key === 'ArrowLeft' && direction !== 'right') {
+                direction = 'left';
+            } else if (event.key === 'ArrowRight' && direction !== 'left') {
+                direction = 'right';
+            }
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            document.querySelector('.start-button').disabled = false;
+            document.querySelector('.start-button').textContent = 'Game Over! Start Again';
+            alert('Game Over! You hit a wall or yourself.');
+        }
+
+        // Resize canvas
+        canvas.width = canvasSize;
+        canvas.height = canvasSize;
+    </script>
+
+</body>
+</html>
 
 
 
