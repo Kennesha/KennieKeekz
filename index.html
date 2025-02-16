@@ -581,7 +581,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffc2e2; /* Blush pink background */
+            background-color: #ffc2e2; /* Soft pink background */
             color: #333;
             margin: 0;
             padding: 0;
@@ -601,12 +601,12 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .box {
             width: 230px;
             padding: 15px;
-            background: #ffccbb; /* Softer Pinkish Peach */
+            background: radial-gradient(circle, #ff99cc, #ff66b2); /* Radiating Bright Blush Pink */
             border: 6px solid transparent;
             border-radius: 20px;
             position: relative;
-            box-shadow: 0 0 12px rgba(255, 140, 105, 0.6); /* Soft Glow */
-            color: #333;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.6); /* Pink Glow */
+            color: white;
             font-weight: bold;
             text-align: center;
         }
@@ -631,6 +631,15 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             bottom: -10px;
         }
 
+        /* Hello Kitty in Top Right Corner */
+        .hello-kitty {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 50px;
+            height: 50px;
+        }
+
         .box h2 {
             font-size: 16px;
             margin-bottom: 8px;
@@ -649,6 +658,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         <!-- Bible Verse of the Day -->
         <div class="box">
             <h2>📖 Bible Verse of the Day</h2>
+            <img src="https://i.ibb.co/SrWvcPR/hello-kitty.png" class="hello-kitty" alt="Hello Kitty">
             <p id="bible-verse"></p>
             <p id="bible-message"></p>
             <p id="bible-meaning"></p>
@@ -657,6 +667,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         <!-- Positive Vibes -->
         <div class="box">
             <h2>🌸 Positive Vibes</h2>
+            <img src="https://i.ibb.co/SrWvcPR/hello-kitty.png" class="hello-kitty" alt="Hello Kitty">
             <p id="positive-vibe-1"></p>
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
