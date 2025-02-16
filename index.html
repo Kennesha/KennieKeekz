@@ -1052,21 +1052,34 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game & Certifications</title>
     <style>
+        /* General styling for the page */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
             background-color: #ffe6f2;
             margin: 0;
             padding: 0;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            height: 100vh;
         }
 
-        /* Section container for Snake game and Degrees/Certifications */
+        /* Header section */
+        header {
+            width: 100%;
+            background-color: #ff66b2;
+            padding: 20px 0;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Container for the Snake Game and Certifications section */
         .section-container {
             display: flex;
             justify-content: space-evenly;
+            align-items: center;
             gap: 40px;
             padding: 20px;
             width: 100%;
@@ -1114,26 +1127,30 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             color: #ff3399;
         }
 
+        /* Styling for the Snake game canvas */
         canvas {
             background-color: #ffccff;
             border: 5px solid #ff66b2;
             border-radius: 10px;
         }
 
-        h1 {
-            color: #ff66b2;
-        }
-
+        /* Styling for the game score */
         .score {
             color: #ff3399;
             font-size: 20px;
             margin-top: 20px;
         }
+
     </style>
 </head>
 <body>
-    <h1>Snake Game & My Certifications</h1>
 
+    <!-- Header -->
+    <header>
+        Snake Game & My Certifications
+    </header>
+
+    <!-- Section container for Snake Game and Certifications -->
     <div class="section-container">
         <!-- Snake Game Container -->
         <div class="game-container">
@@ -1154,19 +1171,20 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         </div>
     </div>
 
+    <!-- Snake Game Script -->
     <script>
         // Game settings
         const canvas = document.getElementById('snakeCanvas');
         const ctx = canvas.getContext('2d');
         const gridSize = 20; // Size of each grid block
-        const canvasSize = canvas.width / gridSize; // number of blocks across the canvas
+        const canvasSize = canvas.width / gridSize; // Number of blocks across the canvas
         let snake = [{ x: 9, y: 9 }];
         let direction = 'RIGHT';
         let food = spawnFood();
         let score = 0;
         let gameOver = false;
 
-        // Draw the snake and the food
+        // Draw the game elements
         function drawGame() {
             if (gameOver) return;
 
@@ -1272,7 +1290,9 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         // Start the game
         drawGame();
     </script>
+
 </body>
 </html>
+
 
 
