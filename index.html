@@ -1040,6 +1040,75 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretty Section Divider</title>
+    <style>
+        /* Section Divider Styling */
+        .section-divider {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(135deg, #ff99cc, #ff66b2); /* Soft pink gradient */
+            margin: 40px 0;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+        }
+
+        /* Decorative Hearts */
+        .section-divider::before,
+        .section-divider::after {
+            content: "♥";
+            position: absolute;
+            font-size: 30px;
+            color: white;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .section-divider::before {
+            left: 20px;
+        }
+
+        .section-divider::after {
+            right: 20px;
+        }
+
+        /* Optional Text in the Divider */
+        .divider-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            font-family: "Arial", sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pretty Section Divider -->
+    <div class="section-divider">
+        <!-- Optional Text Inside Divider -->
+        <div class="divider-text">✨ Stay Inspired ✨</div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+    
+
 
 
 
