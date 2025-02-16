@@ -1045,4 +1045,164 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            background-color: #ffe6f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        canvas {
+            background-color: #ffccff;
+            border: 5px solid #ff66b2;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #ff66b2;
+        }
+
+        .score {
+            color: #ff3399;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎮 Snake Game 🎮</h1>
+    <canvas id="snakeCanvas" width="400" height="400"></canvas>
+    <p class="score">Score: <span id="score">0</span></p>
+
+    <script>
+        // Game settings
+        const canvas = document.getElementById('snakeCanvas');
+        const ctx = canvas.getContext('2d');
+        const gridSize = 20; // Size of each grid block
+        const canvasSize = canvas.width / gridSize; // number of blocks across the canvas
+        let snake = [{ x: 9, y: 9 }];
+        let direction = 'RIGHT';
+        let food = spawnFood();
+        let score = 0;
+        let gameOver = false;
+
+        // Draw the snake and the food
+        function drawGame() {
+            if (gameOver) return;
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Move the snake
+            moveSnake();
+
+            // Check for collision with the wall or itself
+            if (checkCollision()) {
+                gameOver = true;
+                alert('Game Over! Final Score: ' + score);
+                return;
+            }
+
+            // Draw the snake
+            ctx.fillStyle = '#ff66b2';
+            snake.forEach(segment => ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize));
+
+            // Draw the food
+            ctx.fillStyle = '#ff3399';
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+
+            // Update the score
+            document.getElementById('score').textContent = score;
+
+            // Request next frame
+            setTimeout(drawGame, 100);
+        }
+
+        // Move the snake based on the direction
+        function moveSnake() {
+            let head = { ...snake[0] };
+
+            if (direction === 'UP') head.y -= 1;
+            if (direction === 'DOWN') head.y += 1;
+            if (direction === 'LEFT') head.x -= 1;
+            if (direction === 'RIGHT') head.x += 1;
+
+            snake.unshift(head);
+
+            // If snake eats food, increase score and spawn new food
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                food = spawnFood();
+            } else {
+                snake.pop();
+            }
+        }
+
+        // Spawn food at a random position
+        function spawnFood() {
+            let x = Math.floor(Math.random() * canvasSize);
+            let y = Math.floor(Math.random() * canvasSize);
+
+            // Ensure food isn't spawned on the snake
+            while (snake.some(segment => segment.x === x && segment.y === y)) {
+                x = Math.floor(Math.random() * canvasSize);
+                y = Math.floor(Math.random() * canvasSize);
+            }
+
+            return { x, y };
+        }
+
+        // Check for collision with wall or self
+        function checkCollision() {
+            const head = snake[0];
+
+            // Wall collision
+            if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) {
+                return true;
+            }
+
+            // Self collision
+            for (let i = 1; i < snake.length; i++) {
+                if (snake[i].x === head.x && snake[i].y === head.y) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // Change the snake's direction based on key press
+        document.addEventListener('keydown', event => {
+            if (gameOver) return;
+
+            if (event.key === 'ArrowUp' && direction !== 'DOWN') {
+                direction = 'UP';
+            }
+            if (event.key === 'ArrowDown' && direction !== 'UP') {
+                direction = 'DOWN';
+            }
+            if (event.key === 'ArrowLeft' && direction !== 'RIGHT') {
+                direction = 'LEFT';
+            }
+            if (event.key === 'ArrowRight' && direction !== 'LEFT') {
+                direction = 'RIGHT';
+            }
+        });
+
+        // Start the game
+        drawGame();
+    </script>
+</body>
+</html>
 
