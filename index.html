@@ -592,7 +592,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .section-container {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
             padding: 15px;
         }
@@ -601,14 +601,33 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .box {
             width: 220px;
             padding: 15px;
-            background: #cce5ff; /* Soft baby blue */
-            border: 4px dotted transparent; /* Base border */
-            border-image: url('https://i.ibb.co/3sSk4XJ/heart-border.png') 15 round; /* Custom heart-dotted border */
-            border-radius: 18px; /* Rounded edges */
-            box-shadow: 0 0 10px rgba(173, 216, 230, 0.6); /* Soft blue glow */
+            background: #ddeeff; /* Softer baby blue */
+            border: 6px dotted #ff66b2; /* Cute pink dotted border */
+            border-radius: 20px; /* Rounded edges */
+            box-shadow: 0 0 12px rgba(255, 182, 193, 0.6); /* Soft pink glow */
             color: #333;
             font-weight: bold;
             text-align: center;
+            position: relative;
+        }
+
+        /* Custom Heart Dots (Adding cute heart shapes) */
+        .box:before {
+            content: "💕 💕 💕 💕";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+        }
+
+        .box:after {
+            content: "💕 💕 💕 💕";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
         }
 
         .box h2 {
