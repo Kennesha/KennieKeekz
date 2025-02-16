@@ -569,6 +569,8 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
+
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -579,7 +581,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffd9ec; /* BRIGHTER pink */
+            background-color: #ffccf2; /* Brighter pink background */
             color: #333;
             margin: 0;
             padding: 0;
@@ -590,36 +592,34 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .section-container {
             display: flex;
             justify-content: center;
-            gap: 10px; /* Closer spacing */
+            gap: 20px;
             flex-wrap: wrap;
-            padding: 10px;
+            padding: 20px;
         }
 
         /* Shared Box Styling */
         .box {
-            width: 200px; /* Tighter fit */
-            padding: 10px;
-            background: #ffaad4; /* Even brighter pink! */
-            border: 3px solid #ff3399; /* Solid cute pink border */
-            border-radius: 15px; /* Softer, rounded edges */
-            box-shadow: 0 0 10px rgba(255, 51, 153, 0.4); /* Soft pink glow */
+            width: 230px;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff80d4, #ff4da6); /* Brighter Pink Gradient */
+            border: 4px solid #ff1493; /* Hot Pink Border */
+            border-radius: 15px;
+            box-shadow: 0 0 12px rgba(255, 20, 147, 0.6); /* Glowy Pink Effect */
             color: white;
             font-weight: bold;
             text-align: center;
         }
 
         .box h2 {
-            font-size: 16px;
-            margin-bottom: 5px;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
         }
 
         .box p {
-            font-size: 12px;
-            margin: 4px 0;
-            line-height: 1.2;
+            font-size: 14px;
+            margin: 5px 0;
         }
-
     </style>
 </head>
 <body>
@@ -628,29 +628,59 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         <!-- Bible Verse of the Day -->
         <div class="box">
             <h2>📖 Bible Verse of the Day</h2>
-            <p><strong>Psalm 91:14-15</strong></p>
-            <p>“Because he hath set his love upon me, therefore will I deliver him:  
-               I will set him on high, because he hath known my Name.  
-               He shall call upon me, and I will answer him:  
-               I will be with him in trouble: I will deliver him, and glorify him.”</p>
-            <p>💖 A reminder that God will uplift you when you trust in Him.</p>
+            <p id="bible-verse"></p>
+            <p id="bible-message"></p>
         </div>
 
         <!-- Positive Vibes -->
         <div class="box">
             <h2>🌸 Positive Vibes</h2>
-            <p>✨ You are capable of amazing things! Keep shining! ✨</p>
-            <p>💖 Every challenge is an opportunity to grow stronger.</p>
-            <p>🌟 Believe in yourself—you are enough just as you are.</p>
-             <p>💖 Be kind to yourself. You are doing your best, and that’s amazing!</p>
-            <p>🎀 Your dreams are valid, and you are capable of achieving them. 🌟</p>
-            <p>✨ Something beautiful is on its way to you—stay hopeful! 🦋</p>
-            <p>🌷 Difficult roads lead to beautiful destinations. Keep faith! 💪</p>
+            <p id="positive-vibe"></p>
         </div>
     </div>
 
+    <script>
+        // Bible Verses Array
+        const bibleVerses = [
+            { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me, therefore will I deliver him: I will set him on high, because he hath known my Name. He shall call upon me, and I will answer him: I will be with him in trouble: I will deliver him, and glorify him." },
+            { verse: "Jeremiah 29:11", message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future." },
+            { verse: "Isaiah 41:10", message: "Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand." },
+            { verse: "Philippians 4:13", message: "I can do all things through Christ who strengthens me." },
+            { verse: "Proverbs 3:5-6", message: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight." }
+        ];
+
+        // Positive Vibes Array
+        const positiveVibes = [
+            "✨ You are capable of amazing things! Keep shining! ✨",
+            "🌟 Believe in yourself—you are enough just as you are. 🌸",
+            "💖 Every challenge is an opportunity to grow stronger.",
+            "💫 You have a light that the world needs—shine brightly!",
+            "🎀 Your dreams are valid, and you are capable of achieving them.",
+            "🌷 Difficult roads lead to beautiful destinations. Keep faith!",
+            "💖 Be kind to yourself. You are doing your best, and that’s amazing!"
+        ];
+
+        // Function to select verse & vibe based on the day
+        function getDailyContent() {
+            let date = new Date();
+            let index = date.getDate() % bibleVerses.length; // Rotates daily
+            let vibeIndex = date.getDate() % positiveVibes.length; // Rotates daily
+
+            // Set Bible Verse
+            document.getElementById("bible-verse").innerHTML = `<strong>${bibleVerses[index].verse}</strong>`;
+            document.getElementById("bible-message").innerText = bibleVerses[index].message;
+
+            // Set Positive Vibes
+            document.getElementById("positive-vibe").innerText = positiveVibes[vibeIndex];
+        }
+
+        // Run function on page load
+        getDailyContent();
+    </script>
+
 </body>
 </html>
+
 
 
     
