@@ -581,7 +581,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffccf2; /* Brighter pink */
+            background-color: #ffb3e6; /* Brighter pink */
             color: #333;
             margin: 0;
             padding: 0;
@@ -592,22 +592,35 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .section-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
             padding: 20px;
         }
 
         /* Shared Box Styling */
         .box {
-            width: 230px;
+            width: 220px;
             padding: 12px;
-            background: linear-gradient(135deg, #ff80d4, #ff4da6); /* Brighter Pink Gradient */
-            border: 4px solid #ff1493; /* Hot Pink Border */
-            border-radius: 15px;
-            box-shadow: 0 0 12px rgba(255, 20, 147, 0.6); /* Glowy Pink */
+            background: linear-gradient(135deg, #ff99e6, #ff66cc); /* Bright pink gradient */
+            border: 4px dashed white; /* Cute dashed border */
+            border-radius: 25px; /* Softer, rounded edges */
+            box-shadow: 0 0 12px rgba(255, 182, 193, 0.6); /* Soft pink glow */
             color: white;
             font-weight: bold;
             text-align: center;
+            position: relative;
+        }
+
+        /* Cute Scalloped Border Effect */
+        .box::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 3px dotted #ff4da6; /* Dotted effect */
+            border-radius: 30px;
         }
 
         .box h2 {
@@ -648,22 +661,22 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             { 
                 verse: "Psalm 91:14-15", 
                 message: "Because he hath set his love upon me, therefore will I deliver him: I will set him on high, because he hath known my Name. He shall call upon me, and I will answer him: I will be with him in trouble: I will deliver him, and glorify him.", 
-                meaning: "Trust in God, and He will protect and uplift you in tough times." 
+                meaning: "💡 Trust in God, and He will protect and uplift you in tough times." 
             },
             { 
                 verse: "Jeremiah 29:11", 
                 message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", 
-                meaning: "God has a good plan for your life—keep believing!" 
+                meaning: "💡 God has a good plan for your life—keep believing!" 
             },
             { 
                 verse: "Isaiah 41:10", 
                 message: "Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.", 
-                meaning: "No matter what, you are never alone—God is always there to help!" 
+                meaning: "💡 No matter what, you are never alone—God is always there to help!" 
             },
             { 
                 verse: "Philippians 4:13", 
                 message: "I can do all things through Christ who strengthens me.", 
-                meaning: "With faith, you can overcome anything!" 
+                meaning: "💡 With faith, you can overcome anything!" 
             }
         ];
 
@@ -693,7 +706,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             // Set Bible Verse
             document.getElementById("bible-verse").innerHTML = `<strong>${bibleVerses[index].verse}</strong>`;
             document.getElementById("bible-message").innerText = bibleVerses[index].message;
-            document.getElementById("bible-meaning").innerText = `💡 ${bibleVerses[index].meaning}`;
+            document.getElementById("bible-meaning").innerText = bibleVerses[index].meaning;
 
             // Set Positive Vibes
             document.getElementById("positive-vibe-1").innerText = positiveVibes[vibeIndexes[0]];
