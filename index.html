@@ -1050,17 +1050,68 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
+    <title>Snake Game & Certifications</title>
     <style>
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
             background-color: #ffe6f2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
+            display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Section container for Snake game and Degrees/Certifications */
+        .section-container {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 40px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Snake game container */
+        .game-container {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        /* Degrees & Certifications container */
+        .certifications-container {
+            flex: 1;
+            max-width: 500px;
+            background-color: #ffccff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+            border: 3px solid #ff66b2;
+        }
+
+        .certifications-container h2 {
+            font-size: 24px;
+            color: #ff66b2;
+            margin-bottom: 15px;
+        }
+
+        .certifications-container ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .certifications-container li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ff3399;
         }
 
         canvas {
@@ -1081,9 +1132,27 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     </style>
 </head>
 <body>
-    <h1>🎮 Snake Game 🎮</h1>
-    <canvas id="snakeCanvas" width="400" height="400"></canvas>
-    <p class="score">Score: <span id="score">0</span></p>
+    <h1>Snake Game & My Certifications</h1>
+
+    <div class="section-container">
+        <!-- Snake Game Container -->
+        <div class="game-container">
+            <h2>🎮 Snake Game 🎮</h2>
+            <canvas id="snakeCanvas" width="400" height="400"></canvas>
+            <p class="score">Score: <span id="score">0</span></p>
+        </div>
+
+        <!-- Degrees and Certifications Container -->
+        <div class="certifications-container">
+            <h2>📜 My Degrees & Certifications</h2>
+            <ul>
+                <li>🎓 Bachelor of Science in Health Informatics</li>
+                <li>📚 Certification in Data Science</li>
+                <li>💻 Certification in Web Development</li>
+                <li>📈 Certified Health IT Specialist</li>
+            </ul>
+        </div>
+    </div>
 
     <script>
         // Game settings
@@ -1205,4 +1274,5 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     </script>
 </body>
 </html>
+
 
