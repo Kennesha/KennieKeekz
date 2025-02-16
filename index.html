@@ -601,39 +601,34 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .box {
             width: 230px;
             padding: 15px;
-            background: #ffdab9; /* Soft Peach Color */
+            background: #ffccbb; /* Softer Pinkish Peach */
             border: 6px solid transparent;
             border-radius: 20px;
             position: relative;
-            box-shadow: 0 0 12px rgba(255, 140, 105, 0.6); /* Soft Peach Glow */
+            box-shadow: 0 0 12px rgba(255, 140, 105, 0.6); /* Soft Glow */
             color: #333;
             font-weight: bold;
             text-align: center;
         }
 
         /* Scalloped Border Effect */
-        .box:before {
+        .box:before, .box:after {
             content: "";
             position: absolute;
-            top: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
             height: 10px;
-            background: radial-gradient(circle, #ff9b82 25%, transparent 26%);
+            background: radial-gradient(circle, #ff99a8 25%, transparent 26%);
             background-size: 10px 10px;
         }
 
+        .box:before {
+            top: -10px;
+        }
+
         .box:after {
-            content: "";
-            position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            height: 10px;
-            background: radial-gradient(circle, #ff9b82 25%, transparent 26%);
-            background-size: 10px 10px;
         }
 
         .box h2 {
@@ -737,6 +732,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 </body>
 </html>
+
 
 
 
