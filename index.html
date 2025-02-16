@@ -581,7 +581,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffccf2; /* Brighter pink background */
+            background-color: #ffccf2; /* Brighter pink */
             color: #333;
             margin: 0;
             padding: 0;
@@ -592,7 +592,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         .section-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
             padding: 20px;
         }
@@ -600,24 +600,24 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* Shared Box Styling */
         .box {
             width: 230px;
-            padding: 15px;
+            padding: 12px;
             background: linear-gradient(135deg, #ff80d4, #ff4da6); /* Brighter Pink Gradient */
             border: 4px solid #ff1493; /* Hot Pink Border */
             border-radius: 15px;
-            box-shadow: 0 0 12px rgba(255, 20, 147, 0.6); /* Glowy Pink Effect */
+            box-shadow: 0 0 12px rgba(255, 20, 147, 0.6); /* Glowy Pink */
             color: white;
             font-weight: bold;
             text-align: center;
         }
 
         .box h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 16px;
+            margin-bottom: 8px;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
         }
 
         .box p {
-            font-size: 14px;
+            font-size: 13px;
             margin: 5px 0;
         }
     </style>
@@ -630,23 +630,41 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <h2>📖 Bible Verse of the Day</h2>
             <p id="bible-verse"></p>
             <p id="bible-message"></p>
+            <p id="bible-meaning"></p>
         </div>
 
         <!-- Positive Vibes -->
         <div class="box">
             <h2>🌸 Positive Vibes</h2>
-            <p id="positive-vibe"></p>
+            <p id="positive-vibe-1"></p>
+            <p id="positive-vibe-2"></p>
+            <p id="positive-vibe-3"></p>
         </div>
     </div>
 
     <script>
         // Bible Verses Array
         const bibleVerses = [
-            { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me, therefore will I deliver him: I will set him on high, because he hath known my Name. He shall call upon me, and I will answer him: I will be with him in trouble: I will deliver him, and glorify him." },
-            { verse: "Jeremiah 29:11", message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future." },
-            { verse: "Isaiah 41:10", message: "Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand." },
-            { verse: "Philippians 4:13", message: "I can do all things through Christ who strengthens me." },
-            { verse: "Proverbs 3:5-6", message: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight." }
+            { 
+                verse: "Psalm 91:14-15", 
+                message: "Because he hath set his love upon me, therefore will I deliver him: I will set him on high, because he hath known my Name. He shall call upon me, and I will answer him: I will be with him in trouble: I will deliver him, and glorify him.", 
+                meaning: "Trust in God, and He will protect and uplift you in tough times." 
+            },
+            { 
+                verse: "Jeremiah 29:11", 
+                message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", 
+                meaning: "God has a good plan for your life—keep believing!" 
+            },
+            { 
+                verse: "Isaiah 41:10", 
+                message: "Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.", 
+                meaning: "No matter what, you are never alone—God is always there to help!" 
+            },
+            { 
+                verse: "Philippians 4:13", 
+                message: "I can do all things through Christ who strengthens me.", 
+                meaning: "With faith, you can overcome anything!" 
+            }
         ];
 
         // Positive Vibes Array
@@ -657,21 +675,30 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             "💫 You have a light that the world needs—shine brightly!",
             "🎀 Your dreams are valid, and you are capable of achieving them.",
             "🌷 Difficult roads lead to beautiful destinations. Keep faith!",
-            "💖 Be kind to yourself. You are doing your best, and that’s amazing!"
+            "💖 Be kind to yourself. You are doing your best, and that’s amazing!",
+            "🌞 Each day is a fresh start—fill it with positivity and joy!",
+            "💡 The world needs your unique talents—never stop believing in yourself!"
         ];
 
-        // Function to select verse & vibe based on the day
+        // Function to select verse & vibes based on the day
         function getDailyContent() {
             let date = new Date();
             let index = date.getDate() % bibleVerses.length; // Rotates daily
-            let vibeIndex = date.getDate() % positiveVibes.length; // Rotates daily
+            let vibeIndexes = [
+                (date.getDate() + 1) % positiveVibes.length, 
+                (date.getDate() + 2) % positiveVibes.length, 
+                (date.getDate() + 3) % positiveVibes.length
+            ]; // Picks 3 different positive vibes
 
             // Set Bible Verse
             document.getElementById("bible-verse").innerHTML = `<strong>${bibleVerses[index].verse}</strong>`;
             document.getElementById("bible-message").innerText = bibleVerses[index].message;
+            document.getElementById("bible-meaning").innerText = `💡 ${bibleVerses[index].meaning}`;
 
             // Set Positive Vibes
-            document.getElementById("positive-vibe").innerText = positiveVibes[vibeIndex];
+            document.getElementById("positive-vibe-1").innerText = positiveVibes[vibeIndexes[0]];
+            document.getElementById("positive-vibe-2").innerText = positiveVibes[vibeIndexes[1]];
+            document.getElementById("positive-vibe-3").innerText = positiveVibes[vibeIndexes[2]];
         }
 
         // Run function on page load
@@ -680,6 +707,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 </body>
 </html>
+
 
 
 
