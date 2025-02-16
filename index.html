@@ -1093,6 +1093,13 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             background: #ff3399;
         }
 
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff3399;
+            margin-top: 10px;
+        }
+
         /* Responsive Layout */
         @media (max-width: 700px) {
             .games-container {
@@ -1111,6 +1118,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <h2>🐍 Snake Game</h2>
             <canvas id="snakeGame" width="300" height="300"></canvas>
             <button onclick="startSnakeGame()">Start Snake</button>
+            <div id="snakeScore" class="score">Score: 0</div>
         </div>
 
         <!-- Ping Pong Game -->
@@ -1118,44 +1126,48 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <h2>🏓 Ping Pong</h2>
             <canvas id="pingPongGame" width="300" height="300"></canvas>
             <button onclick="startPingPongGame()">Start Ping Pong</button>
+            <div id="pingPongScore" class="score">Score: 0</div>
         </div>
     </div>
 
     <script>
-        /* SNAKE GAME (Mouse-Controlled) */
+        /* MOUSE-CONTROLLED SNAKE GAME */
         let snakeInterval;
+        let snakeScore = 0;
+
         function startSnakeGame() {
             clearInterval(snakeInterval);
             const canvas = document.getElementById("snakeGame");
             const ctx = canvas.getContext("2d");
 
             let snake = [{x: 150, y: 150}];
-            let direction = "RIGHT";
             let food = { x: Math.floor(Math.random() * 20) * 15, y: Math.floor(Math.random() * 20) * 15 };
+            let target = { x: 150, y: 150 }; // Mouse movement target
 
-            canvas.addEventListener("click", (event) => {
+            canvas.addEventListener("mousemove", (event) => {
                 let rect = canvas.getBoundingClientRect();
-                let clickX = event.clientX - rect.left;
-                let clickY = event.clientY - rect.top;
-                let head = snake[0];
-
-                if (clickX > head.x && direction !== "LEFT") direction = "RIGHT";
-                else if (clickX < head.x && direction !== "RIGHT") direction = "LEFT";
-                else if (clickY > head.y && direction !== "UP") direction = "DOWN";
-                else if (clickY < head.y && direction !== "DOWN") direction = "UP";
+                target.x = event.clientX - rect.left;
+                target.y = event.clientY - rect.top;
             });
 
             function update() {
                 let head = { x: snake[0].x, y: snake[0].y };
 
-                if (direction === "UP") head.y -= 15;
-                if (direction === "DOWN") head.y += 15;
-                if (direction === "LEFT") head.x -= 15;
-                if (direction === "RIGHT") head.x += 15;
+                // Move towards the mouse
+                let dx = target.x - head.x;
+                let dy = target.y - head.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > 5) {
+                    head.x += (dx / distance) * 15;
+                    head.y += (dy / distance) * 15;
+                }
 
                 snake.unshift(head);
-                if (head.x === food.x && head.y === food.y) {
+                if (Math.abs(head.x - food.x) < 15 && Math.abs(head.y - food.y) < 15) {
                     food = { x: Math.floor(Math.random() * 20) * 15, y: Math.floor(Math.random() * 20) * 15 };
+                    snakeScore++; // Increase score when the snake eats food
+                    document.getElementById("snakeScore").textContent = `Score: ${snakeScore}`; // Update score display
                 } else {
                     snake.pop();
                 }
@@ -1185,6 +1197,8 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
         /* PING PONG GAME */
         let pongInterval;
+        let pongScore = 0;
+
         function startPingPongGame() {
             clearInterval(pongInterval);
             const canvas = document.getElementById("pingPongGame");
@@ -1213,6 +1227,8 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
                     ball.x < paddle.x + paddle.width
                 ) {
                     ball.dy *= -1;
+                    pongScore++; // Increase score when the ball hits the paddle
+                    document.getElementById("pingPongScore").textContent = `Score: ${pongScore}`; // Update score display
                 }
 
                 if (ball.y > canvas.height) {
@@ -1243,3 +1259,4 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 </body>
 </html>
+
