@@ -1050,190 +1050,181 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake & Ping Pong Game</title>
+    <title>Games Section</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffe6f2;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-
-        /* Keep banners & existing sections */
-        .banner {
-            background-color: #ff99cc;
-            padding: 20px;
-            font-size: 24px;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Game Layout */
+        /* Games Section Styling */
         .games-container {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
         }
 
         .game-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             background: white;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 20px;
             box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
             border: 3px solid #ff99cc;
-            text-align: center;
-            width: 320px;
+            width: 300px;
         }
 
         canvas {
-            background: black;
-            display: block;
-            margin: 10px auto;
-            border: 2px solid #ff99cc;
+            border: 3px solid #ff99cc;
+            background: white;
         }
 
-        .start-button {
-            background-color: #ff99cc;
-            color: white;
+        button {
+            margin-top: 10px;
+            padding: 10px;
             border: none;
-            padding: 10px 15px;
-            font-size: 16px;
-            border-radius: 5px;
+            border-radius: 10px;
+            background: #ff66b2;
+            color: white;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        .start-button:hover {
-            background-color: #ff66b2;
+        button:hover {
+            background: #ff3399;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 700px) {
+            .games-container {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Existing Banners -->
-    <div class="banner">🌸 Welcome to My Website! 🌸</div>
-
     <!-- Games Section -->
-    <h1>🎮 Snake & Ping Pong Game 🎮</h1>
-
     <div class="games-container">
         <!-- Snake Game -->
         <div class="game-box">
             <h2>🐍 Snake Game</h2>
-            <canvas id="snakeCanvas" width="300" height="300"></canvas>
-            <button class="start-button" onclick="startSnakeGame()">Start Snake</button>
+            <canvas id="snakeGame" width="300" height="300"></canvas>
+            <button onclick="startSnakeGame()">Start Snake</button>
         </div>
 
         <!-- Ping Pong Game -->
         <div class="game-box">
             <h2>🏓 Ping Pong</h2>
-            <canvas id="pingPongCanvas" width="300" height="300"></canvas>
-            <button class="start-button" onclick="startPingPong()">Start Ping Pong</button>
+            <canvas id="pingPongGame" width="300" height="300"></canvas>
+            <button onclick="startPingPongGame()">Start Ping Pong</button>
         </div>
     </div>
 
     <script>
-        // SNAKE GAME
-        const snakeCanvas = document.getElementById('snakeCanvas');
-        const snakeCtx = snakeCanvas.getContext('2d');
-        let snake, food, direction, snakeInterval;
-
+        /* SNAKE GAME */
+        let snakeInterval;
         function startSnakeGame() {
-            snake = [{ x: 150, y: 150 }];
-            direction = 'right';
-            generateFood();
-            document.addEventListener('keydown', changeDirection);
-            snakeInterval = setInterval(updateSnakeGame, 100);
-        }
+            clearInterval(snakeInterval);
+            const canvas = document.getElementById("snakeGame");
+            const ctx = canvas.getContext("2d");
 
-        function updateSnakeGame() {
-            let head = { ...snake[0] };
-            switch (direction) {
-                case 'up': head.y -= 10; break;
-                case 'down': head.y += 10; break;
-                case 'left': head.x -= 10; break;
-                case 'right': head.x += 10; break;
+            let snake = [{x: 150, y: 150}];
+            let direction = "RIGHT";
+            let food = { x: Math.floor(Math.random() * 20) * 15, y: Math.floor(Math.random() * 20) * 15 };
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+                else if (event.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+                else if (event.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+                else if (event.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+            });
+
+            function update() {
+                let head = { x: snake[0].x, y: snake[0].y };
+
+                if (direction === "UP") head.y -= 15;
+                if (direction === "DOWN") head.y += 15;
+                if (direction === "LEFT") head.x -= 15;
+                if (direction === "RIGHT") head.x += 15;
+
+                snake.unshift(head);
+                if (head.x === food.x && head.y === food.y) {
+                    food = { x: Math.floor(Math.random() * 20) * 15, y: Math.floor(Math.random() * 20) * 15 };
+                } else {
+                    snake.pop();
+                }
+
+                if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300) {
+                    clearInterval(snakeInterval);
+                }
             }
-            if (head.x < 0 || head.x >= 300 || head.y < 0 || head.y >= 300 || snake.some(segment => segment.x === head.x && segment.y === head.y)) {
-                clearInterval(snakeInterval);
-                alert('Game Over!');
-                return;
+
+            function draw() {
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "green";
+                snake.forEach((part) => ctx.fillRect(part.x, part.y, 15, 15));
+                ctx.fillStyle = "red";
+                ctx.fillRect(food.x, food.y, 15, 15);
             }
-            snake.unshift(head);
-            if (head.x === food.x && head.y === food.y) generateFood();
-            else snake.pop();
-            drawSnakeGame();
-        }
 
-        function changeDirection(event) {
-            const key = event.key;
-            if (key === 'ArrowUp' && direction !== 'down') direction = 'up';
-            if (key === 'ArrowDown' && direction !== 'up') direction = 'down';
-            if (key === 'ArrowLeft' && direction !== 'right') direction = 'left';
-            if (key === 'ArrowRight' && direction !== 'left') direction = 'right';
-        }
-
-        function generateFood() {
-            food = {
-                x: Math.floor(Math.random() * 30) * 10,
-                y: Math.floor(Math.random() * 30) * 10
-            };
-        }
-
-        function drawSnakeGame() {
-            snakeCtx.clearRect(0, 0, 300, 300);
-            snakeCtx.fillStyle = '#00ff00';
-            snake.forEach(segment => snakeCtx.fillRect(segment.x, segment.y, 10, 10));
-            snakeCtx.fillStyle = '#ff0000';
-            snakeCtx.fillRect(food.x, food.y, 10, 10);
-        }
-
-        // PING PONG GAME (Larger Paddle)
-        const pingCanvas = document.getElementById('pingPongCanvas');
-        const pingCtx = pingCanvas.getContext('2d');
-        let ball, paddle, ballSpeedX, ballSpeedY, gameInterval;
-
-        function startPingPong() {
-            ball = { x: 150, y: 150, radius: 10 };
-            paddle = { x: 90, y: 280, width: 120, height: 10 };  // **Made paddle wider**
-            ballSpeedX = 3;
-            ballSpeedY = 3;
-            document.addEventListener('mousemove', movePaddle);
-            gameInterval = setInterval(updatePingPong, 30);
-        }
-
-        function updatePingPong() {
-            ball.x += ballSpeedX;
-            ball.y += ballSpeedY;
-            if (ball.x < 0 || ball.x > 290) ballSpeedX = -ballSpeedX;
-            if (ball.y < 0) ballSpeedY = -ballSpeedY;
-            if (ball.y > 270 && ball.x > paddle.x && ball.x < paddle.x + paddle.width) ballSpeedY = -ballSpeedY;
-            if (ball.y > 300) {
-                clearInterval(gameInterval);
-                alert('Game Over!');
-                return;
+            function gameLoop() {
+                update();
+                draw();
             }
-            drawPingPong();
+
+            snakeInterval = setInterval(gameLoop, 150);
         }
 
-        function movePaddle(event) {
-            const rect = pingCanvas.getBoundingClientRect();
-            let mouseX = event.clientX - rect.left;
-            if (mouseX > 10 && mouseX < 180) { // **Adjusted for wider paddle**
-                paddle.x = mouseX - paddle.width / 2;
+        /* PING PONG GAME */
+        let pongInterval;
+        function startPingPongGame() {
+            clearInterval(pongInterval);
+            const canvas = document.getElementById("pingPongGame");
+            const ctx = canvas.getContext("2d");
+
+            let paddle = { x: 110, y: 280, width: 100, height: 10 }; // Longer Paddle
+            let ball = { x: 150, y: 150, radius: 5, dx: 2, dy: 2 };
+
+            document.addEventListener("mousemove", (event) => {
+                let rect = canvas.getBoundingClientRect();
+                paddle.x = event.clientX - rect.left - paddle.width / 2;
+            });
+
+            function update() {
+                ball.x += ball.dx;
+                ball.y += ball.dy;
+
+                if (ball.x < 0 || ball.x > canvas.width) ball.dx *= -1;
+                if (ball.y < 0) ball.dy *= -1;
+
+                if (ball.y > paddle.y && ball.x > paddle.x && ball.x < paddle.x + paddle.width) {
+                    ball.dy *= -1;
+                }
+
+                if (ball.y > canvas.height) {
+                    clearInterval(pongInterval);
+                }
             }
-        }
 
-        function drawPingPong() {
-            pingCtx.clearRect(0, 0, 300, 300);
-            pingCtx.fillStyle = '#00ff00';
-            pingCtx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
-            pingCtx.fillStyle = '#ff0000';
-            pingCtx.beginPath();
-            pingCtx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-            pingCtx.fill();
+            function draw() {
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "blue";
+                ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+                ctx.fillStyle = "red";
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            function gameLoop() {
+                update();
+                draw();
+            }
+
+            pongInterval = setInterval(gameLoop, 20);
         }
     </script>
 
