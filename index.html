@@ -1050,26 +1050,32 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Degrees & Certifications 🎓</title>
+    <title>My Degrees & Certifications 🎓</title>
     <style>
+        /* General Styling */
         body {
             font-family: "Arial", sans-serif;
             background-color: #ffe6f2;
+            text-align: center;
             margin: 0;
             padding: 0;
+        }
+
+        /* Main Container */
+        .main-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: flex-start;
-            min-height: 100vh;
-            flex-wrap: wrap;
+            padding: 20px;
         }
 
         /* Degrees & Certifications Styling */
-        .degrees-container {
+        .degrees-container, .snake-game-container {
             background: white;
             width: 45%;
-            max-width: 700px;
-            margin: 40px;
+            max-width: 600px;
+            margin: 20px;
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
@@ -1077,7 +1083,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             text-align: center;
         }
 
-        .degrees-container h2 {
+        .degrees-container h2, .snake-game-container h2 {
             color: #ff4d6d;
             font-size: 24px;
         }
@@ -1117,16 +1123,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         }
 
         /* Snake Game Styling */
-        .snake-game-container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            width: 45%;
-            max-width: 600px;
-            margin: 40px;
-            text-align: center;
-            padding: 10px;
-        }
-
         .snake-canvas {
             background-color: #000;
             display: block;
@@ -1152,6 +1148,11 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
         /* Responsive Styling */
         @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
             .degrees-container, .snake-game-container {
                 width: 90%;
             }
@@ -1160,32 +1161,35 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 </head>
 <body>
 
-    <!-- Degrees & Certifications Section -->
-    <div class="degrees-container">
-        <h2>🎓 My Degrees & Certifications 🎓</h2>
+    <!-- Main Container to hold both sections -->
+    <div class="main-container">
+        <!-- Degrees & Certifications Section -->
+        <div class="degrees-container">
+            <h2>🎓 My Degrees & Certifications 🎓</h2>
 
-        <div class="degree">
-            <a href="https://ibb.co/d4xvxYvs"><img src="https://i.ibb.co/s9z4zY4p/Bachelors-degree.png" alt="Bachelors-degree" border="0"></a>
-            <div class="degree-info">
-                <h3>Bachelor’s in Health Informatics</h3>
-                <p>Georgia State University - May 2024</p>
+            <div class="degree">
+                <a href="https://ibb.co/d4xvxYvs"><img src="https://i.ibb.co/s9z4zY4p/Bachelors-degree.png" alt="Bachelors-degree" border="0"></a>
+                <div class="degree-info">
+                    <h3>Bachelor’s in Health Informatics</h3>
+                    <p>Georgia State University - May 2024</p>
+                </div>
+            </div>
+
+            <div class="degree">
+                <a href="https://ibb.co/6JBGDDHp"><img src="https://i.ibb.co/mF8dhh9Y/AAS-degree.jpg" alt="AAS-degree" border="0"></a>
+                <div class="degree-info">
+                    <h3>Associate’s in Business Technology</h3>
+                    <p>Gwinnett Technical College - July 2021</p>
+                </div>
             </div>
         </div>
 
-        <div class="degree">
-            <a href="https://ibb.co/6JBGDDHp"><img src="https://i.ibb.co/mF8dhh9Y/AAS-degree.jpg" alt="AAS-degree" border="0"></a>
-            <div class="degree-info">
-                <h3>Associate’s in Business Technology</h3>
-                <p>Gwinnett Technical College - July 2021</p>
-            </div>
+        <!-- Snake Game Section -->
+        <div class="snake-game-container">
+            <h2>🎮 Snake Game 🎮</h2>
+            <canvas id="snakeCanvas" class="snake-canvas"></canvas>
+            <button class="start-button" onclick="startGame()">Start Game</button>
         </div>
-    </div>
-
-    <!-- Snake Game Section -->
-    <div class="snake-game-container">
-        <h2>🎮 Snake Game 🎮</h2>
-        <canvas id="snakeCanvas" class="snake-canvas"></canvas>
-        <button class="start-button" onclick="startGame()">Start Game</button>
     </div>
 
     <script>
@@ -1307,14 +1311,12 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             alert('Game Over! You hit a wall or yourself.');
         }
 
-        // Resize canvas
+        // Set canvas size
         canvas.width = canvasSize;
         canvas.height = canvasSize;
     </script>
 
 </body>
 </html>
-
-
 
 
