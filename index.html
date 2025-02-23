@@ -683,30 +683,39 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             gap: 20px;
             flex-wrap: wrap;
             padding: 15px;
-            position: relative;
         }
 
         .box {
             width: 240px;
-            padding: 18px;
+            padding: 15px;
             background: radial-gradient(circle, #ffd9e6, #ffccdd);
             border: 6px solid transparent;
             border-radius: 20px;
-            position: relative;
-            box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
             color: black;
             font-weight: bold;
             text-align: center;
+            position: relative;
         }
 
         .box h2 {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: 14px;
+            margin-bottom: 5px;
         }
 
         .box p {
             font-size: 12px;
-            margin: 5px 0;
+            margin: 3px 0;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white;
+            animation: sparkle 1.5s infinite alternate;
         }
 
         @keyframes sparkle {
@@ -714,37 +723,15 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             50% { opacity: 0.7; transform: scale(1.2); }
             100% { opacity: 0.3; transform: scale(1); }
         }
-
-        .sparkle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 5px white;
-            animation: sparkle 1.5s infinite alternate;
-        }
-
-        .extra-sparkle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-            animation: sparkle 1s infinite alternate;
-        }
     </style>
 </head>
 <body>
-
     <div class="section-container">
         <div class="box">
             <h2>📖 Bible Verse of the Day</h2>
             <p id="bible-verse"></p>
             <p id="bible-message"></p>
             <p id="bible-meaning"></p>
-            <div class="sparkle"></div>
         </div>
 
         <div class="box">
@@ -752,39 +739,46 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <p id="positive-vibe-1"></p>
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
-            <p id="positive-vibe-4"></p>
-            <div class="sparkle"></div>
         </div>
     </div>
 
     <script>
         const bibleVerses = [
-            { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me...", meaning: "💡 Trust in God, and He will protect you." },
-            { verse: "Jeremiah 29:11", message: "For I know the plans I have for you...", meaning: "💡 God has a good plan for your life!" }
+            { verse: "Philippians 4:13", message: "I can do all things through Christ who strengthens me.", meaning: "💡 Trust in God's strength in all situations." },
+            { verse: "Psalm 46:1", message: "God is our refuge and strength, an ever-present help in trouble.", meaning: "💡 God is always there for you, lean on Him." },
+            { verse: "Isaiah 41:10", message: "Fear not, for I am with you; be not dismayed, for I am your God.", meaning: "💡 God’s presence gives you courage." }
         ];
 
         const positiveVibes = [
-            ["💖 Today is a fresh start!", "🌟 You are worthy of love!", "💪 You are stronger than your challenges!", "✨ Keep shining!"],
-            ["🌈 Bright days are ahead!", "💎 You are enough!", "🔥 Your energy is inspiring!", "🌸 Let go of what you can't control."]
+            "✨ You are stronger than you think!",
+            "🌟 Your light brightens the world!",
+            "💖 Choose joy today, you deserve it!",
+            "💫 Keep moving forward with faith!",
+            "🌸 Believe in the magic within you!"
         ];
 
-        const today = new Date().getDate();
-        const verseIndex = today % bibleVerses.length;
-        const vibesIndex = today % positiveVibes.length;
+        function getDailyContent() {
+            let date = new Date();
+            let index = date.getDate() % bibleVerses.length;
+            let vibeIndexes = [
+                (date.getDate()) % positiveVibes.length, 
+                (date.getDate() + 1) % positiveVibes.length, 
+                (date.getDate() + 2) % positiveVibes.length
+            ];
 
-        document.getElementById("bible-verse").textContent = bibleVerses[verseIndex].verse;
-        document.getElementById("bible-message").textContent = bibleVerses[verseIndex].message;
-        document.getElementById("bible-meaning").textContent = bibleVerses[verseIndex].meaning;
+            document.getElementById("bible-verse").innerHTML = `<strong>${bibleVerses[index].verse}</strong>`;
+            document.getElementById("bible-message").innerText = bibleVerses[index].message;
+            document.getElementById("bible-meaning").innerText = bibleVerses[index].meaning;
 
-        document.getElementById("positive-vibe-1").textContent = positiveVibes[vibesIndex][0];
-        document.getElementById("positive-vibe-2").textContent = positiveVibes[vibesIndex][1];
-        document.getElementById("positive-vibe-3").textContent = positiveVibes[vibesIndex][2];
-        document.getElementById("positive-vibe-4").textContent = positiveVibes[vibesIndex][3];
+            document.getElementById("positive-vibe-1").innerText = positiveVibes[vibeIndexes[0]];
+            document.getElementById("positive-vibe-2").innerText = positiveVibes[vibeIndexes[1]];
+            document.getElementById("positive-vibe-3").innerText = positiveVibes[vibeIndexes[2]];
+        }
+
+        getDailyContent();
     </script>
-
 </body>
 </html>
-
 
 
     
