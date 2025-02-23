@@ -667,103 +667,199 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faith & Positivity</title>
     <style>
+        /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffe8ef;
-            color: black;
+            background-color: #ffe8ef; /* Soft blush pink background */
+            color: black; /* Black font color for easier readability */
             margin: 0;
             padding: 0;
             text-align: center;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Allow vertical scrolling */
         }
 
+        /* Section Container */
         .section-container {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
             padding: 15px;
-        }
-
-        .box {
-            width: 240px;
-            padding: 15px;
-            background: radial-gradient(circle, #ffd9e6, #ffccdd);
-            border: 6px solid transparent;
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
-            color: black;
-            font-weight: bold;
-            text-align: center;
             position: relative;
         }
 
-        .box h2 {
-            font-size: 14px;
-            margin-bottom: 5px;
+        /* Shared Box Styling */
+        .box {
+            width: 240px;
+            padding: 18px;
+            background: radial-gradient(circle, #ffd9e6, #ffccdd); /* Soft blush pink gradient */
+            border: 6px solid transparent;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.8); /* Soft pink glow */
+            color: black; /* Black font color */
+            font-weight: bold;
+            text-align: center;
         }
 
-        .box p {
-            font-size: 12px;
-            margin: 3px 0;
+        /* Scalloped Border Effect */
+        .box:before, .box:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 10px;
+            background: radial-gradient(circle, #ffb6c1 25%, transparent 26%);
+            background-size: 10px 10px;
+        }
+
+        .box:before {
+            top: -10px;
+        }
+
+        .box:after {
+            bottom: -10px;
+        }
+
+        /* Sparkling Glitter Effect */
+        @keyframes sparkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(1); }
         }
 
         .sparkle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 5px;
+            height: 5px;
             background: white;
             border-radius: 50%;
             box-shadow: 0 0 5px white;
             animation: sparkle 1.5s infinite alternate;
         }
 
-        @keyframes sparkle {
-            0% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-            100% { opacity: 0.3; transform: scale(1); }
+        .sparkle:nth-child(1) { top: 5%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 15%; left: 30%; animation-delay: 0.2s; }
+        .sparkle:nth-child(3) { top: 25%; left: 40%; animation-delay: 0.4s; }
+        .sparkle:nth-child(4) { top: 35%; left: 50%; animation-delay: 0.6s; }
+        .sparkle:nth-child(5) { top: 45%; left: 60%; animation-delay: 0.8s; }
+        .sparkle:nth-child(6) { top: 55%; left: 70%; animation-delay: 1s; }
+        .sparkle:nth-child(7) { top: 65%; left: 80%; animation-delay: 1.2s; }
+        .sparkle:nth-child(8) { top: 75%; left: 90%; animation-delay: 1.4s; }
+
+        /* Extra Sparkles Around the Box */
+        .extra-sparkle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            animation: sparkle 1s infinite alternate;
+        }
+
+        .extra-sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .extra-sparkle:nth-child(2) { top: 20%; left: 90%; animation-delay: 0.2s; }
+        .extra-sparkle:nth-child(3) { top: 50%; left: 30%; animation-delay: 0.4s; }
+        .extra-sparkle:nth-child(4) { top: 60%; left: 70%; animation-delay: 0.6s; }
+        .extra-sparkle:nth-child(5) { top: 80%; left: 50%; animation-delay: 0.8s; }
+
+        .box h2 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+        }
+
+        .box p {
+            font-size: 12px;
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
+
     <div class="section-container">
+        <!-- Bible Verse of the Day -->
         <div class="box">
             <h2>📖 Bible Verse of the Day</h2>
             <p id="bible-verse"></p>
             <p id="bible-message"></p>
             <p id="bible-meaning"></p>
+            <!-- Sparkles -->
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <!-- Extra Sparkles Around the Box -->
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
         </div>
 
+        <!-- Positive Vibes -->
         <div class="box">
             <h2>🌸 Positive Vibes</h2>
             <p id="positive-vibe-1"></p>
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
+            <p id="positive-vibe-4"></p>
+            <!-- Sparkles -->
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <!-- Extra Sparkles Around the Box -->
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
+            <div class="extra-sparkle"></div>
         </div>
     </div>
 
     <script>
+        // Bible Verses Array
         const bibleVerses = [
-            { verse: "Philippians 4:13", message: "I can do all things through Christ who strengthens me.", meaning: "💡 Trust in God's strength in all situations." },
-            { verse: "Psalm 46:1", message: "God is our refuge and strength, an ever-present help in trouble.", meaning: "💡 God is always there for you, lean on Him." },
-            { verse: "Isaiah 41:10", message: "Fear not, for I am with you; be not dismayed, for I am your God.", meaning: "💡 God’s presence gives you courage." }
-        ];
+            { 
+                verse: "Psalm 91:14-15", 
+                message: "Because he hath set his love upon me, therefore will I deliver him: I will set him on high, because he hath known my Name. He shall call upon me, and I will answer him: I will be with him in trouble: I will deliver him, and glorify him.", 
+                meaning: "💡 Trust in God, and He will protect and uplift you in tough times." 
+            },
+            { 
+                verse: "Jeremiah 29:11", 
+                message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", 
+                meaning: "💡 God has a good plan for your life—keep believing!" 
+            }
+	      ];
 
+        // Positive Vibes Array
         const positiveVibes = [
-            "✨ You are stronger than you think!",
-            "🌟 Your light brightens the world!",
-            "💖 Choose joy today, you deserve it!",
-            "💫 Keep moving forward with faith!",
-            "🌸 Believe in the magic within you!"
+            "✨ You are capable of amazing things! Keep shining! ✨",
+            "🌟 Believe in yourself—you are enough just as you are. 🌸",
+            "💖 Every challenge is an opportunity to grow stronger.",
+            "💫 You have a light that the world needs—shine brightly!",
         ];
 
+        // Function to select verse & vibes based on the day
         function getDailyContent() {
             let date = new Date();
             let index = date.getDate() % bibleVerses.length;
             let vibeIndexes = [
-                (date.getDate()) % positiveVibes.length, 
                 (date.getDate() + 1) % positiveVibes.length, 
-                (date.getDate() + 2) % positiveVibes.length
+                (date.getDate() + 2) % positiveVibes.length, 
+                (date.getDate() + 3) % positiveVibes.length, 
+                (date.getDate() + 4) % positiveVibes.length
             ];
 
             document.getElementById("bible-verse").innerHTML = `<strong>${bibleVerses[index].verse}</strong>`;
@@ -773,10 +869,12 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             document.getElementById("positive-vibe-1").innerText = positiveVibes[vibeIndexes[0]];
             document.getElementById("positive-vibe-2").innerText = positiveVibes[vibeIndexes[1]];
             document.getElementById("positive-vibe-3").innerText = positiveVibes[vibeIndexes[2]];
+            document.getElementById("positive-vibe-4").innerText = positiveVibes[vibeIndexes[3]];
         }
 
         getDailyContent();
     </script>
+
 </body>
 </html>
 
