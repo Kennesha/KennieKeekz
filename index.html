@@ -660,7 +660,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -740,32 +739,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             animation: sparkle 1.5s infinite alternate;
         }
 
-        .sparkle:nth-child(1) { top: 5%; left: 20%; animation-delay: 0s; }
-        .sparkle:nth-child(2) { top: 15%; left: 30%; animation-delay: 0.2s; }
-        .sparkle:nth-child(3) { top: 25%; left: 40%; animation-delay: 0.4s; }
-        .sparkle:nth-child(4) { top: 35%; left: 50%; animation-delay: 0.6s; }
-        .sparkle:nth-child(5) { top: 45%; left: 60%; animation-delay: 0.8s; }
-        .sparkle:nth-child(6) { top: 55%; left: 70%; animation-delay: 1s; }
-        .sparkle:nth-child(7) { top: 65%; left: 80%; animation-delay: 1.2s; }
-        .sparkle:nth-child(8) { top: 75%; left: 90%; animation-delay: 1.4s; }
-
-        /* Extra Sparkles Around the Box */
-        .extra-sparkle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-            animation: sparkle 1s infinite alternate;
-        }
-
-        .extra-sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .extra-sparkle:nth-child(2) { top: 20%; left: 90%; animation-delay: 0.2s; }
-        .extra-sparkle:nth-child(3) { top: 50%; left: 30%; animation-delay: 0.4s; }
-        .extra-sparkle:nth-child(4) { top: 60%; left: 70%; animation-delay: 0.6s; }
-        .extra-sparkle:nth-child(5) { top: 80%; left: 50%; animation-delay: 0.8s; }
-
         .box h2 {
             font-size: 16px;
             margin-bottom: 8px;
@@ -787,21 +760,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <p id="bible-verse"></p>
             <p id="bible-message"></p>
             <p id="bible-meaning"></p>
-            <!-- Sparkles -->
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <!-- Extra Sparkles Around the Box -->
-            <div class="extra-sparkle"></div>
-            <div class="extra-sparkle"></div>
-            <div class="extra-sparkle"></div>
-            <div class="extra-sparkle"></div>
-            <div class="extra-sparkle"></div>
         </div>
 
         <!-- Positive Vibes -->
@@ -810,46 +768,24 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <p id="positive-vibe-1"></p>
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
-            <p id="positive-vibe-4"></p>
-            <p id="positive-vibe-5"></p>
-            <!-- Sparkles -->
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <!-- Extra Sparkles Around the Box -->
-            <div class="extra-sparkle"></div>
-            <div class="extra-sparkle"></div>
-            <div class="extra-sparkle"></div>
-            <div class="extra-sparkle"></div>
-            <div class="extra-sparkle"></div>
         </div>
     </div>
 
     <script>
         // Bible Verses Array (30 verses for a month)
         const bibleVerses = [
-            { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me, therefore will I deliver him: I will set him on high, because he hath known my Name. He shall call upon me, and I will answer him: I will be with him in trouble: I will deliver him, and glorify him.", meaning: "💡 Trust in God, and He will protect and uplift you in tough times." },
-            { verse: "Jeremiah 29:11", message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", meaning: "💡 God has a good plan for your life—keep believing!" },
-            { verse: "Romans 15:13", message: "May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.", meaning: "💡 Trust in God's hope to bring joy and peace." },
-            { verse: "Psalm 46:1", message: "God is our refuge and strength, an ever-present help in trouble.", meaning: "💡 God is always with you in times of need." },
-            { verse: "1 Peter 5:7", message: "Cast all your anxiety on him because he cares for you.", meaning: "💡 Don't hold onto worries; give them to God." },
-            { verse: "Philippians 4:13", message: "I can do all things through Christ who strengthens me.", meaning: "💡 With Christ, you have the strength to overcome any obstacle." },
-            { verse: "Isaiah 40:31", message: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.", meaning: "💡 Hope in God brings renewed strength and perseverance." },
-            { verse: "Proverbs 3:5-6", message: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", meaning: "💡 Trust in God completely, and He will guide your way." },
+            { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me, therefore will I deliver him...", meaning: "💡 Trust in God, and He will protect you." },
+            { verse: "Jeremiah 29:11", message: "For I know the plans I have for you, declares the Lord...", meaning: "💡 God has a good plan for your life!" },
+            { verse: "Romans 15:13", message: "May the God of hope fill you with all joy and peace...", meaning: "💡 Trust in God's hope for joy and peace." },
+            { verse: "Psalm 46:1", message: "God is our refuge and strength, an ever-present help in trouble.", meaning: "💡 God is always with you." },
         ];
 
-        // Positive Vibes Array (30 affirmations for a month)
+        // Positive Vibes Array (At least 3 affirmations per day)
         const positiveVibes = [
-            "💖 Today is a fresh start, full of endless possibilities.",
-            "🌟 You are worthy of love, happiness, and success.",
-            "💪 You are stronger than your challenges—keep going!",
-            "✨ Believe in yourself; you are capable of amazing things.",
-            "🌈 Bright days are ahead, keep the faith and move forward.",
+            ["💖 Today is a fresh start!", "🌟 You are worthy of love!", "💪 You are stronger than your challenges!"],
+            ["✨ Believe in yourself!", "🌈 Bright days are ahead!", "🌸 Let go of what you can't control."],
+            ["💎 You are enough!", "🌿 Growth takes time—keep going!", "🔥 Your energy is powerful and inspiring!"],
+            ["🌞 You bring light to others!", "💗 Love yourself as you are!", "🌻 Choose joy every day!"],
         ];
 
         // Select today's content based on the day of the month
@@ -861,11 +797,14 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         document.getElementById("bible-message").textContent = bibleVerses[verseIndex].message;
         document.getElementById("bible-meaning").textContent = bibleVerses[verseIndex].meaning;
 
-        document.getElementById("positive-vibe-1").textContent = positiveVibes[vibesIndex];
+        document.getElementById("positive-vibe-1").textContent = positiveVibes[vibesIndex][0];
+        document.getElementById("positive-vibe-2").textContent = positiveVibes[vibesIndex][1];
+        document.getElementById("positive-vibe-3").textContent = positiveVibes[vibesIndex][2];
     </script>
 
 </body>
 </html>
+
 
     
 
