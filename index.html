@@ -768,24 +768,28 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <p id="positive-vibe-1"></p>
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
+            <p id="positive-vibe-4"></p>
         </div>
     </div>
 
     <script>
-        // Bible Verses Array (30 verses for a month)
+        // Bible Verses for 30 Days
         const bibleVerses = [
             { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me, therefore will I deliver him...", meaning: "💡 Trust in God, and He will protect you." },
             { verse: "Jeremiah 29:11", message: "For I know the plans I have for you, declares the Lord...", meaning: "💡 God has a good plan for your life!" },
             { verse: "Romans 15:13", message: "May the God of hope fill you with all joy and peace...", meaning: "💡 Trust in God's hope for joy and peace." },
-            { verse: "Psalm 46:1", message: "God is our refuge and strength, an ever-present help in trouble.", meaning: "💡 God is always with you." },
+            { verse: "Proverbs 3:5-6", message: "Trust in the Lord with all your heart and lean not on your own understanding...", meaning: "💡 Faith in God brings clarity." },
+            { verse: "Isaiah 41:10", message: "Fear not, for I am with you; be not dismayed, for I am your God...", meaning: "💡 You are never alone." },
+            { verse: "Psalm 46:1", message: "God is our refuge and strength, an ever-present help in trouble.", meaning: "💡 God is always with you." }
         ];
 
-        // Positive Vibes Array (At least 3 affirmations per day)
+        // Positive Vibes for 30 Days
         const positiveVibes = [
-            ["💖 Today is a fresh start!", "🌟 You are worthy of love!", "💪 You are stronger than your challenges!"],
-            ["✨ Believe in yourself!", "🌈 Bright days are ahead!", "🌸 Let go of what you can't control."],
-            ["💎 You are enough!", "🌿 Growth takes time—keep going!", "🔥 Your energy is powerful and inspiring!"],
-            ["🌞 You bring light to others!", "💗 Love yourself as you are!", "🌻 Choose joy every day!"],
+            ["💖 Today is a fresh start!", "🌟 You are worthy of love!", "💪 You are stronger than your challenges!", "✨ Keep shining!"],
+            ["🌈 Bright days are ahead!", "💎 You are enough!", "🔥 Your energy is inspiring!", "🌸 Let go of what you can't control."],
+            ["🌞 You bring light to others!", "💗 Love yourself as you are!", "🌻 Choose joy every day!", "💫 Trust in your journey."],
+            ["🌿 Growth takes time—keep going!", "🦋 Transformation is happening!", "🏆 You are achieving great things!", "💙 Peace is within you."],
+            ["💜 Be kind to yourself today.", "🎉 Celebrate small victories!", "🌷 New opportunities are coming!", "🔆 Your spirit is radiant!"]
         ];
 
         // Select today's content based on the day of the month
@@ -800,6 +804,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         document.getElementById("positive-vibe-1").textContent = positiveVibes[vibesIndex][0];
         document.getElementById("positive-vibe-2").textContent = positiveVibes[vibesIndex][1];
         document.getElementById("positive-vibe-3").textContent = positiveVibes[vibesIndex][2];
+        document.getElementById("positive-vibe-4").textContent = positiveVibes[vibesIndex][3];
     </script>
 
 </body>
