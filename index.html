@@ -667,18 +667,16 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faith & Positivity</title>
     <style>
-        /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffe8ef; /* Soft blush pink background */
-            color: black; /* Black font color for easier readability */
+            background-color: #ffe8ef;
+            color: black;
             margin: 0;
             padding: 0;
             text-align: center;
-            overflow-x: hidden; /* Allow vertical scrolling */
+            overflow-x: hidden;
         }
 
-        /* Section Container */
         .section-container {
             display: flex;
             justify-content: center;
@@ -688,41 +686,29 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             position: relative;
         }
 
-        /* Shared Box Styling */
         .box {
             width: 240px;
             padding: 18px;
-            background: radial-gradient(circle, #ffd9e6, #ffccdd); /* Soft blush pink gradient */
+            background: radial-gradient(circle, #ffd9e6, #ffccdd);
             border: 6px solid transparent;
             border-radius: 20px;
             position: relative;
-            box-shadow: 0 0 20px rgba(255, 182, 193, 0.8); /* Soft pink glow */
-            color: black; /* Black font color */
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+            color: black;
             font-weight: bold;
             text-align: center;
         }
 
-        /* Scalloped Border Effect */
-        .box:before, .box:after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            height: 10px;
-            background: radial-gradient(circle, #ffb6c1 25%, transparent 26%);
-            background-size: 10px 10px;
+        .box h2 {
+            font-size: 16px;
+            margin-bottom: 8px;
         }
 
-        .box:before {
-            top: -10px;
+        .box p {
+            font-size: 12px;
+            margin: 5px 0;
         }
 
-        .box:after {
-            bottom: -10px;
-        }
-
-        /* Sparkling Glitter Effect */
         @keyframes sparkle {
             0% { opacity: 0.3; transform: scale(1); }
             50% { opacity: 0.7; transform: scale(1.2); }
@@ -739,60 +725,49 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             animation: sparkle 1.5s infinite alternate;
         }
 
-        .box h2 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
-        }
-
-        .box p {
-            font-size: 12px;
-            margin: 5px 0;
+        .extra-sparkle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            animation: sparkle 1s infinite alternate;
         }
     </style>
 </head>
 <body>
 
     <div class="section-container">
-        <!-- Bible Verse of the Day -->
         <div class="box">
             <h2>📖 Bible Verse of the Day</h2>
             <p id="bible-verse"></p>
             <p id="bible-message"></p>
             <p id="bible-meaning"></p>
+            <div class="sparkle"></div>
         </div>
 
-        <!-- Positive Vibes -->
         <div class="box">
             <h2>🌸 Positive Vibes</h2>
             <p id="positive-vibe-1"></p>
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
             <p id="positive-vibe-4"></p>
+            <div class="sparkle"></div>
         </div>
     </div>
 
     <script>
-        // Bible Verses for 30 Days
         const bibleVerses = [
-            { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me, therefore will I deliver him...", meaning: "💡 Trust in God, and He will protect you." },
-            { verse: "Jeremiah 29:11", message: "For I know the plans I have for you, declares the Lord...", meaning: "💡 God has a good plan for your life!" },
-            { verse: "Romans 15:13", message: "May the God of hope fill you with all joy and peace...", meaning: "💡 Trust in God's hope for joy and peace." },
-            { verse: "Proverbs 3:5-6", message: "Trust in the Lord with all your heart and lean not on your own understanding...", meaning: "💡 Faith in God brings clarity." },
-            { verse: "Isaiah 41:10", message: "Fear not, for I am with you; be not dismayed, for I am your God...", meaning: "💡 You are never alone." },
-            { verse: "Psalm 46:1", message: "God is our refuge and strength, an ever-present help in trouble.", meaning: "💡 God is always with you." }
+            { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me...", meaning: "💡 Trust in God, and He will protect you." },
+            { verse: "Jeremiah 29:11", message: "For I know the plans I have for you...", meaning: "💡 God has a good plan for your life!" }
         ];
 
-        // Positive Vibes for 30 Days
         const positiveVibes = [
             ["💖 Today is a fresh start!", "🌟 You are worthy of love!", "💪 You are stronger than your challenges!", "✨ Keep shining!"],
-            ["🌈 Bright days are ahead!", "💎 You are enough!", "🔥 Your energy is inspiring!", "🌸 Let go of what you can't control."],
-            ["🌞 You bring light to others!", "💗 Love yourself as you are!", "🌻 Choose joy every day!", "💫 Trust in your journey."],
-            ["🌿 Growth takes time—keep going!", "🦋 Transformation is happening!", "🏆 You are achieving great things!", "💙 Peace is within you."],
-            ["💜 Be kind to yourself today.", "🎉 Celebrate small victories!", "🌷 New opportunities are coming!", "🔆 Your spirit is radiant!"]
+            ["🌈 Bright days are ahead!", "💎 You are enough!", "🔥 Your energy is inspiring!", "🌸 Let go of what you can't control."]
         ];
 
-        // Select today's content based on the day of the month
         const today = new Date().getDate();
         const verseIndex = today % bibleVerses.length;
         const vibesIndex = today % positiveVibes.length;
@@ -809,6 +784,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 </body>
 </html>
+
 
 
     
