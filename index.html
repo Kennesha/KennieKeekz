@@ -661,8 +661,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -813,6 +811,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             <p id="positive-vibe-2"></p>
             <p id="positive-vibe-3"></p>
             <p id="positive-vibe-4"></p>
+            <p id="positive-vibe-5"></p>
             <!-- Sparkles -->
             <div class="sparkle"></div>
             <div class="sparkle"></div>
@@ -832,54 +831,43 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     </div>
 
     <script>
-        // Bible Verses Array
+        // Bible Verses Array (30 verses for a month)
         const bibleVerses = [
-            { 
-                verse: "Psalm 91:14-15", 
-                message: "Because he hath set his love upon me, therefore will I deliver him: I will set him on high, because he hath known my Name. He shall call upon me, and I will answer him: I will be with him in trouble: I will deliver him, and glorify him.", 
-                meaning: "💡 Trust in God, and He will protect and uplift you in tough times." 
-            },
-            { 
-                verse: "Jeremiah 29:11", 
-                message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", 
-                meaning: "💡 God has a good plan for your life—keep believing!" 
-            }
+            { verse: "Psalm 91:14-15", message: "Because he hath set his love upon me, therefore will I deliver him: I will set him on high, because he hath known my Name. He shall call upon me, and I will answer him: I will be with him in trouble: I will deliver him, and glorify him.", meaning: "💡 Trust in God, and He will protect and uplift you in tough times." },
+            { verse: "Jeremiah 29:11", message: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", meaning: "💡 God has a good plan for your life—keep believing!" },
+            { verse: "Romans 15:13", message: "May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.", meaning: "💡 Trust in God's hope to bring joy and peace." },
+            { verse: "Psalm 46:1", message: "God is our refuge and strength, an ever-present help in trouble.", meaning: "💡 God is always with you in times of need." },
+            { verse: "1 Peter 5:7", message: "Cast all your anxiety on him because he cares for you.", meaning: "💡 Don't hold onto worries; give them to God." },
+            { verse: "Philippians 4:13", message: "I can do all things through Christ who strengthens me.", meaning: "💡 With Christ, you have the strength to overcome any obstacle." },
+            { verse: "Isaiah 40:31", message: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.", meaning: "💡 Hope in God brings renewed strength and perseverance." },
+            { verse: "Proverbs 3:5-6", message: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", meaning: "💡 Trust in God completely, and He will guide your way." },
         ];
 
-        // Positive Vibes Array
+        // Positive Vibes Array (30 affirmations for a month)
         const positiveVibes = [
-            "✨ You are capable of amazing things! Keep shining! ✨",
-            "🌟 Believe in yourself—you are enough just as you are. 🌸",
-            "💖 Every challenge is an opportunity to grow stronger.",
-            "💫 You have a light that the world needs—shine brightly!",
+            "💖 Today is a fresh start, full of endless possibilities.",
+            "🌟 You are worthy of love, happiness, and success.",
+            "💪 You are stronger than your challenges—keep going!",
+            "✨ Believe in yourself; you are capable of amazing things.",
+            "🌈 Bright days are ahead, keep the faith and move forward.",
         ];
 
-        // Function to select verse & vibes based on the day
-        function getDailyContent() {
-            let date = new Date();
-            let index = date.getDate() % bibleVerses.length;
-            let vibeIndexes = [
-                (date.getDate() + 1) % positiveVibes.length, 
-                (date.getDate() + 2) % positiveVibes.length, 
-                (date.getDate() + 3) % positiveVibes.length, 
-                (date.getDate() + 4) % positiveVibes.length
-            ];
+        // Select today's content based on the day of the month
+        const today = new Date().getDate();
+        const verseIndex = today % bibleVerses.length;
+        const vibesIndex = today % positiveVibes.length;
 
-            document.getElementById("bible-verse").innerHTML = `<strong>${bibleVerses[index].verse}</strong>`;
-            document.getElementById("bible-message").innerText = bibleVerses[index].message;
-            document.getElementById("bible-meaning").innerText = bibleVerses[index].meaning;
+        document.getElementById("bible-verse").textContent = bibleVerses[verseIndex].verse;
+        document.getElementById("bible-message").textContent = bibleVerses[verseIndex].message;
+        document.getElementById("bible-meaning").textContent = bibleVerses[verseIndex].meaning;
 
-            document.getElementById("positive-vibe-1").innerText = positiveVibes[vibeIndexes[0]];
-            document.getElementById("positive-vibe-2").innerText = positiveVibes[vibeIndexes[1]];
-            document.getElementById("positive-vibe-3").innerText = positiveVibes[vibeIndexes[2]];
-            document.getElementById("positive-vibe-4").innerText = positiveVibes[vibeIndexes[3]];
-        }
-
-        getDailyContent();
+        document.getElementById("positive-vibe-1").textContent = positiveVibes[vibesIndex];
     </script>
 
 </body>
 </html>
+
+    
 
 
 
