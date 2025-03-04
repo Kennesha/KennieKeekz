@@ -1002,6 +1002,149 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
     
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatics & Data Blog</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            background-color: #ffe8ef; /* Soft blush pink background */
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Blog Section Styling */
+        .blog-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .blog-box {
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            background: radial-gradient(circle, #ffe0e6, #ffccdd);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.7);
+            text-align: left;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .blog-box h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .blog-box p {
+            font-size: 14px;
+        }
+
+        .blog-box .blog-date {
+            font-size: 12px;
+            color: gray;
+        }
+
+        /* Scalloped Border Effect */
+        .blog-box:before, .blog-box:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 10px;
+            background: radial-gradient(circle, #ffb6c1 25%, transparent 26%);
+            background-size: 10px 10px;
+        }
+
+        .blog-box:before {
+            top: -10px;
+        }
+
+        .blog-box:after {
+            bottom: -10px;
+        }
+
+        /* Sparkling Glitter Effect */
+        @keyframes sparkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white;
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        .sparkle:nth-child(1) { top: 5%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 15%; left: 30%; animation-delay: 0.2s; }
+        .sparkle:nth-child(3) { top: 25%; left: 40%; animation-delay: 0.4s; }
+        .sparkle:nth-child(4) { top: 35%; left: 50%; animation-delay: 0.6s; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Blog Section -->
+    <div class="blog-container">
+        <h2>📰 Informatics & Data Insights</h2>
+        <div class="blog-box">
+            <h3 id="blog-title"></h3>
+            <p class="blog-date" id="blog-date"></p>
+            <p id="blog-content"></p>
+        </div>
+    </div>
+
+    <script>
+        // Blog Posts Array
+        const blogPosts = [
+            { 
+                title: "How AI is Transforming Healthcare Data", 
+                date: "March 4, 2025", 
+                content: "Artificial intelligence is making waves in health informatics, helping hospitals optimize workflows, improve patient outcomes, and reduce administrative burden."
+            },
+            { 
+                title: "The Future of Data Security in Healthcare", 
+                date: "March 5, 2025", 
+                content: "With growing cyber threats, healthcare organizations must prioritize encryption, multi-factor authentication, and compliance with HIPAA to keep patient data safe."
+            },
+            { 
+                title: "Big Data in Public Health: A Game Changer", 
+                date: "March 6, 2025", 
+                content: "From tracking disease outbreaks to predicting health trends, big data is revolutionizing public health initiatives and helping save lives."
+            }
+        ];
+
+        // Function to select daily content
+        function getDailyContent() {
+            let date = new Date();
+            let blogIndex = date.getDate() % blogPosts.length;
+
+            document.getElementById("blog-title").innerText = blogPosts[blogIndex].title;
+            document.getElementById("blog-date").innerText = blogPosts[blogIndex].date;
+            document.getElementById("blog-content").innerText = blogPosts[blogIndex].content;
+        }
+
+        getDailyContent();
+    </script>
+
+</body>
+</html>
 
 
 
