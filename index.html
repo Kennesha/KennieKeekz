@@ -1011,7 +1011,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffe8ef; /* Soft blush pink background */
+            background-color: #ffe8ef;
             color: black;
             margin: 0;
             padding: 0;
@@ -1019,16 +1019,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             overflow-x: hidden;
         }
 
-        /* Section Container */
-        .section-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 15px;
-        }
-
-        /* News Box Styling */
+        /* News Box */
         .news-box {
             width: 80%;
             max-width: 600px;
@@ -1041,175 +1032,94 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             font-weight: bold;
             text-align: center;
             position: relative;
+            margin: 10px auto;
         }
 
-        /* Scalloped Border Effect */
-        .news-box:before, .news-box:after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            height: 10px;
-            background: radial-gradient(circle, #ffb6c1 25%, transparent 26%);
-            background-size: 10px 10px;
-        }
-
-        .news-box:before { top: -10px; }
-        .news-box:after { bottom: -10px; }
-
-        /* Sparkles */
-        @keyframes sparkle {
-            0% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-            100% { opacity: 0.3; transform: scale(1); }
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
+        /* Article List */
+        .article {
+            text-align: left;
+            padding: 10px;
             background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 5px white;
-            animation: sparkle 1.5s infinite alternate;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 2px 2px 10px rgba(255, 182, 193, 0.5);
         }
 
-        .sparkle:nth-child(1) { top: 5%; left: 20%; animation-delay: 0s; }
-        .sparkle:nth-child(2) { top: 15%; left: 30%; animation-delay: 0.2s; }
-        .sparkle:nth-child(3) { top: 25%; left: 40%; animation-delay: 0.4s; }
-        .sparkle:nth-child(4) { top: 35%; left: 50%; animation-delay: 0.6s; }
-        .sparkle:nth-child(5) { top: 45%; left: 60%; animation-delay: 0.8s; }
-
-        /* News Links */
-        .news-box a {
-            text-decoration: none;
+        .article a {
+            font-size: 16px;
+            font-weight: bold;
             color: #d63384;
-            font-size: 14px;
+            text-decoration: none;
         }
 
-        .news-box a:hover {
+        .article a:hover {
             text-decoration: underline;
             color: #ff1493;
         }
 
-        /* Comment Section */
-        .comment-section {
-            margin-top: 10px;
-            padding: 10px;
-            border-top: 2px solid #ffb6c1;
+        .article p {
+            font-size: 14px;
+            color: #555;
         }
-
-        .comment {
-            background: white;
-            padding: 8px;
-            margin: 5px 0;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(255, 182, 193, 0.5);
-            text-align: left;
-        }
-
-        .comment button {
-            margin: 2px;
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            padding: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .comment button:hover {
-            background-color: #ff1493;
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="section-container">
-        <!-- News Section -->
-        <div class="news-box">
-            <h2>📰 Latest Informatics & Data News</h2>
-            <p><a href="https://www.smartbrief.com/industry/tech" target="_blank">📌 Informatics SmartBrief</a></p>
-            <p><a href="https://medium.com/tag/data-intelligence" target="_blank">📌 Medium: Data Intelligence</a></p>
-            <p><a href="https://www.linkedin.com/news" target="_blank">📌 LinkedIn Tech News</a></p>
-            <p><a href="https://www.forbes.com/analytics-ai/" target="_blank">📌 Forbes AI & Analytics</a></p>
-            <p><a href="https://www.healthcareitnews.com/" target="_blank">📌 Healthcare IT News</a></p>
-
-            <!-- Sparkles -->
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-            <div class="sparkle"></div>
-        </div>
-
-        <!-- Comment Section -->
-        <div class="news-box">
-            <h2>💬 Discussion</h2>
-            <div id="comment-container"></div>
-            <textarea id="comment-input" placeholder="Write a comment..." style="width: 90%;"></textarea><br>
-            <button onclick="addComment()">Post Comment</button>
-        </div>
+    <div class="news-box">
+        <h2>📰 Latest Informatics & Data News</h2>
+        <div id="article-list">Loading articles...</div>
     </div>
 
     <script>
-        function addComment() {
-            let commentText = document.getElementById("comment-input").value;
-            if (commentText.trim() === "") return;
-            
-            let commentContainer = document.getElementById("comment-container");
-            let commentDiv = document.createElement("div");
-            commentDiv.className = "comment";
-            commentDiv.innerHTML = `
-                <p>${commentText}</p>
-                <button onclick="likeComment(this)">👍 Like (<span>0</span>)</button>
-                <button onclick="dislikeComment(this)">👎 Dislike (<span>0</span>)</button>
-                <button onclick="replyComment(this)">💬 Reply</button>
-                <div class="replies"></div>
-            `;
-            
-            commentContainer.appendChild(commentDiv);
-            document.getElementById("comment-input").value = "";
+        async function fetchArticles() {
+            let articles = [
+                {
+                    title: "How AI is Changing Business Intelligence",
+                    description: "Discover how artificial intelligence is revolutionizing data analysis and decision-making.",
+                    link: "https://www.forbes.com/sites/forbestechcouncil/2023/ai-in-business-intelligence"
+                },
+                {
+                    title: "The Rise of Healthcare Informatics",
+                    description: "How data intelligence is shaping the future of medical technology.",
+                    link: "https://www.healthcareitnews.com/news/healthcare-informatics"
+                },
+                {
+                    title: "Data Science Trends in 2025",
+                    description: "Explore upcoming trends in data science and how they will impact industries.",
+                    link: "https://towardsdatascience.com/data-science-trends-2025"
+                },
+                {
+                    title: "LinkedIn’s Top AI & Data Jobs",
+                    description: "See the most in-demand AI and data intelligence roles for 2025.",
+                    link: "https://www.linkedin.com/pulse/top-ai-jobs-2025"
+                },
+                {
+                    title: "SmartBrief: AI in Healthcare",
+                    description: "A breakdown of AI’s role in improving patient outcomes and hospital efficiency.",
+                    link: "https://www.smartbrief.com/original/ai-healthcare-2024"
+                }
+            ];
+
+            let articleList = document.getElementById("article-list");
+            articleList.innerHTML = ""; // Clear loading text
+
+            articles.forEach(article => {
+                let articleDiv = document.createElement("div");
+                articleDiv.className = "article";
+                articleDiv.innerHTML = `
+                    <a href="${article.link}" target="_blank">${article.title}</a>
+                    <p>${article.description}</p>
+                `;
+                articleList.appendChild(articleDiv);
+            });
         }
 
-        function likeComment(button) {
-            let count = button.querySelector("span");
-            if (button.disabled) return;
-            count.innerText = parseInt(count.innerText) + 1;
-            button.disabled = true; // Prevent multiple likes from one user
-        }
-
-        function dislikeComment(button) {
-            let count = button.querySelector("span");
-            if (button.disabled) return;
-            count.innerText = parseInt(count.innerText) + 1;
-            button.disabled = true; // Prevent multiple dislikes from one user
-        }
-
-        function replyComment(button) {
-            let replyBox = document.createElement("textarea");
-            replyBox.placeholder = "Write a reply...";
-            let replyButton = document.createElement("button");
-            replyButton.innerText = "Post Reply";
-            replyButton.onclick = function () {
-                let replyText = replyBox.value;
-                if (replyText.trim() === "") return;
-                let replyDiv = document.createElement("div");
-                replyDiv.className = "comment";
-                replyDiv.innerHTML = `<p>${replyText}</p>`;
-                button.parentElement.querySelector(".replies").appendChild(replyDiv);
-                replyBox.remove();
-                replyButton.remove();
-            };
-            button.parentElement.appendChild(replyBox);
-            button.parentElement.appendChild(replyButton);
-        }
+        fetchArticles();
     </script>
 
 </body>
 </html>
+
 
 
 
