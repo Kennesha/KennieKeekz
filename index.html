@@ -1006,112 +1006,211 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informatics & Data Insights</title>
+    <title>Informatics News & Discussion</title>
     <style>
+        /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffe8ef;
+            background-color: #ffe8ef; /* Soft blush pink background */
             color: black;
             margin: 0;
             padding: 0;
             text-align: center;
             overflow-x: hidden;
         }
-        .blog-container {
+
+        /* Section Container */
+        .section-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
+            gap: 20px;
+            padding: 15px;
         }
-        .blog-box {
-            width: 90%;
-            max-width: 500px;
-            padding: 20px;
-            background: radial-gradient(circle, #ffe0e6, #ffccdd);
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 182, 193, 0.7);
-            text-align: left;
+
+        /* News Box Styling */
+        .news-box {
+            width: 80%;
+            max-width: 600px;
+            padding: 18px;
+            background: radial-gradient(circle, #ffd9e6, #ffccdd);
+            border: 6px solid transparent;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+            color: black;
+            font-weight: bold;
+            text-align: center;
             position: relative;
-            margin-bottom: 20px;
         }
-        .blog-box h3 {
-            font-size: 18px;
-            margin-bottom: 5px;
+
+        /* Scalloped Border Effect */
+        .news-box:before, .news-box:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 10px;
+            background: radial-gradient(circle, #ffb6c1 25%, transparent 26%);
+            background-size: 10px 10px;
         }
-        .blog-box a {
+
+        .news-box:before { top: -10px; }
+        .news-box:after { bottom: -10px; }
+
+        /* Sparkles */
+        @keyframes sparkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white;
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        .sparkle:nth-child(1) { top: 5%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 15%; left: 30%; animation-delay: 0.2s; }
+        .sparkle:nth-child(3) { top: 25%; left: 40%; animation-delay: 0.4s; }
+        .sparkle:nth-child(4) { top: 35%; left: 50%; animation-delay: 0.6s; }
+        .sparkle:nth-child(5) { top: 45%; left: 60%; animation-delay: 0.8s; }
+
+        /* News Links */
+        .news-box a {
             text-decoration: none;
             color: #d63384;
-            font-weight: bold;
-        }
-        .blog-box .blog-date {
-            font-size: 12px;
-            color: gray;
-        }
-        .comment-section textarea {
-            width: 90%;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
             font-size: 14px;
         }
-        .comment-section button {
-            margin-top: 5px;
-            padding: 6px 12px;
-            background-color: #ff80a5;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
+
+        .news-box a:hover {
+            text-decoration: underline;
+            color: #ff1493;
         }
+
+        /* Comment Section */
+        .comment-section {
+            margin-top: 10px;
+            padding: 10px;
+            border-top: 2px solid #ffb6c1;
+        }
+
         .comment {
             background: white;
             padding: 8px;
-            border-radius: 6px;
             margin: 5px 0;
-            font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: relative;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(255, 182, 193, 0.5);
+            text-align: left;
         }
-        .comment-buttons button {
-            background: none;
+
+        .comment button {
+            margin: 2px;
+            background-color: #ff69b4;
+            color: white;
             border: none;
-            font-size: 14px;
+            padding: 5px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-right: 10px;
-            color: gray;
         }
+
+        .comment button:hover {
+            background-color: #ff1493;
+        }
+
     </style>
 </head>
 <body>
-    <div class="blog-container" id="blog-container"></div>
+
+    <div class="section-container">
+        <!-- News Section -->
+        <div class="news-box">
+            <h2>📰 Latest Informatics & Data News</h2>
+            <p><a href="https://www.smartbrief.com/industry/tech" target="_blank">📌 Informatics SmartBrief</a></p>
+            <p><a href="https://medium.com/tag/data-intelligence" target="_blank">📌 Medium: Data Intelligence</a></p>
+            <p><a href="https://www.linkedin.com/news" target="_blank">📌 LinkedIn Tech News</a></p>
+            <p><a href="https://www.forbes.com/analytics-ai/" target="_blank">📌 Forbes AI & Analytics</a></p>
+            <p><a href="https://www.healthcareitnews.com/" target="_blank">📌 Healthcare IT News</a></p>
+
+            <!-- Sparkles -->
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+
+        <!-- Comment Section -->
+        <div class="news-box">
+            <h2>💬 Discussion</h2>
+            <div id="comment-container"></div>
+            <textarea id="comment-input" placeholder="Write a comment..." style="width: 90%;"></textarea><br>
+            <button onclick="addComment()">Post Comment</button>
+        </div>
+    </div>
+
     <script>
-        const blogPosts = [
-            { title: "How AI is Changing Data Intelligence", date: "March 4, 2025", link: "https://example.com/ai-data" },
-            { title: "The Future of Business Analytics", date: "March 4, 2025", link: "https://example.com/business-intelligence" },
-            { title: "Big Data & Public Health", date: "March 4, 2025", link: "https://example.com/public-health" },
-            { title: "Cloud Computing in Healthcare", date: "March 4, 2025", link: "https://example.com/cloud-healthcare" },
-            { title: "Cybersecurity in Data Science", date: "March 4, 2025", link: "https://example.com/cybersecurity" }
-        ];
-        
-        function displayArticles() {
-            let container = document.getElementById("blog-container");
-            container.innerHTML = "";
+        function addComment() {
+            let commentText = document.getElementById("comment-input").value;
+            if (commentText.trim() === "") return;
             
-            blogPosts.forEach(post => {
-                let blogBox = document.createElement("div");
-                blogBox.classList.add("blog-box");
-                blogBox.innerHTML = `
-                    <h3><a href="${post.link}" target="_blank">${post.title}</a></h3>
-                    <p class="blog-date">${post.date}</p>
-                `;
-                container.appendChild(blogBox);
-            });
+            let commentContainer = document.getElementById("comment-container");
+            let commentDiv = document.createElement("div");
+            commentDiv.className = "comment";
+            commentDiv.innerHTML = `
+                <p>${commentText}</p>
+                <button onclick="likeComment(this)">👍 Like (<span>0</span>)</button>
+                <button onclick="dislikeComment(this)">👎 Dislike (<span>0</span>)</button>
+                <button onclick="replyComment(this)">💬 Reply</button>
+                <div class="replies"></div>
+            `;
+            
+            commentContainer.appendChild(commentDiv);
+            document.getElementById("comment-input").value = "";
         }
-        displayArticles();
+
+        function likeComment(button) {
+            let count = button.querySelector("span");
+            if (button.disabled) return;
+            count.innerText = parseInt(count.innerText) + 1;
+            button.disabled = true; // Prevent multiple likes from one user
+        }
+
+        function dislikeComment(button) {
+            let count = button.querySelector("span");
+            if (button.disabled) return;
+            count.innerText = parseInt(count.innerText) + 1;
+            button.disabled = true; // Prevent multiple dislikes from one user
+        }
+
+        function replyComment(button) {
+            let replyBox = document.createElement("textarea");
+            replyBox.placeholder = "Write a reply...";
+            let replyButton = document.createElement("button");
+            replyButton.innerText = "Post Reply";
+            replyButton.onclick = function () {
+                let replyText = replyBox.value;
+                if (replyText.trim() === "") return;
+                let replyDiv = document.createElement("div");
+                replyDiv.className = "comment";
+                replyDiv.innerHTML = `<p>${replyText}</p>`;
+                button.parentElement.querySelector(".replies").appendChild(replyDiv);
+                replyBox.remove();
+                replyButton.remove();
+            };
+            button.parentElement.appendChild(replyBox);
+            button.parentElement.appendChild(replyButton);
+        }
     </script>
+
 </body>
 </html>
+
 
 
 
