@@ -1001,8 +1001,7 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-    
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1045,8 +1044,10 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             margin-bottom: 5px;
         }
 
-        .blog-box p {
-            font-size: 14px;
+        .blog-box a {
+            text-decoration: none;
+            color: #d63384;
+            font-weight: bold;
         }
 
         .blog-box .blog-date {
@@ -1054,48 +1055,62 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             color: gray;
         }
 
-        /* Scalloped Border Effect */
-        .blog-box:before, .blog-box:after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Comment Section */
+        .comment-section {
+            margin-top: 10px;
+        }
+
+        .comment-section textarea {
             width: 90%;
-            height: 10px;
-            background: radial-gradient(circle, #ffb6c1 25%, transparent 26%);
-            background-size: 10px 10px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
         }
 
-        .blog-box:before {
-            top: -10px;
+        .comment-section button {
+            margin-top: 5px;
+            padding: 6px 12px;
+            background-color: #ff80a5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
         }
 
-        .blog-box:after {
-            bottom: -10px;
+        .comments-list {
+            margin-top: 10px;
+            text-align: left;
         }
 
-        /* Sparkling Glitter Effect */
-        @keyframes sparkle {
-            0% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-            100% { opacity: 0.3; transform: scale(1); }
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
+        .comment {
             background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 5px white;
-            animation: sparkle 1.5s infinite alternate;
+            padding: 8px;
+            border-radius: 6px;
+            margin: 5px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
-        .sparkle:nth-child(1) { top: 5%; left: 20%; animation-delay: 0s; }
-        .sparkle:nth-child(2) { top: 15%; left: 30%; animation-delay: 0.2s; }
-        .sparkle:nth-child(3) { top: 25%; left: 40%; animation-delay: 0.4s; }
-        .sparkle:nth-child(4) { top: 35%; left: 50%; animation-delay: 0.6s; }
+        .comment-buttons {
+            margin-top: 5px;
+        }
 
+        .comment-buttons button {
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            margin-right: 10px;
+            color: gray;
+        }
+
+        .reply-section {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -1104,47 +1119,129 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     <div class="blog-container">
         <h2>📰 Informatics & Data Insights</h2>
         <div class="blog-box">
-            <h3 id="blog-title"></h3>
+            <h3><a href="#" id="blog-title" target="_blank"></a></h3>
             <p class="blog-date" id="blog-date"></p>
             <p id="blog-content"></p>
+
+            <!-- Comment Section -->
+            <div class="comment-section">
+                <textarea id="comment-input" placeholder="Leave a comment..."></textarea>
+                <button onclick="addComment()">Post</button>
+                <div class="comments-list" id="comments-list"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Blog Posts Array
+        // Blog Posts Array with External Links
         const blogPosts = [
             { 
                 title: "How AI is Transforming Healthcare Data", 
                 date: "March 4, 2025", 
-                content: "Artificial intelligence is making waves in health informatics, helping hospitals optimize workflows, improve patient outcomes, and reduce administrative burden."
+                content: "AI is revolutionizing hospital workflows and patient outcomes.",
+                link: "https://www.healthcareitnews.com/ai-healthcare"
             },
             { 
                 title: "The Future of Data Security in Healthcare", 
                 date: "March 5, 2025", 
-                content: "With growing cyber threats, healthcare organizations must prioritize encryption, multi-factor authentication, and compliance with HIPAA to keep patient data safe."
+                content: "Encryption and multi-factor authentication are key to protecting patient data.",
+                link: "https://www.healthdatamanagement.com/security"
             },
             { 
                 title: "Big Data in Public Health: A Game Changer", 
                 date: "March 6, 2025", 
-                content: "From tracking disease outbreaks to predicting health trends, big data is revolutionizing public health initiatives and helping save lives."
+                content: "Tracking disease outbreaks and predicting trends with data-driven insights.",
+                link: "https://www.forbes.com/big-data-health"
             }
         ];
 
-        // Function to select daily content
+        // Function to select daily blog post
         function getDailyContent() {
             let date = new Date();
             let blogIndex = date.getDate() % blogPosts.length;
 
             document.getElementById("blog-title").innerText = blogPosts[blogIndex].title;
+            document.getElementById("blog-title").href = blogPosts[blogIndex].link;
             document.getElementById("blog-date").innerText = blogPosts[blogIndex].date;
             document.getElementById("blog-content").innerText = blogPosts[blogIndex].content;
         }
 
         getDailyContent();
+
+        // Comment Section Functionality
+        function addComment() {
+            let commentInput = document.getElementById("comment-input");
+            let commentText = commentInput.value.trim();
+
+            if (commentText !== "") {
+                let commentsList = document.getElementById("comments-list");
+                let newComment = document.createElement("div");
+                newComment.classList.add("comment");
+
+                newComment.innerHTML = `
+                    <p>${commentText}</p>
+                    <div class="comment-buttons">
+                        <button onclick="likeComment(this)">👍 <span>0</span></button>
+                        <button onclick="dislikeComment(this)">👎 <span>0</span></button>
+                        <button onclick="replyToComment(this)">💬 Reply</button>
+                    </div>
+                    <div class="reply-section"></div>
+                `;
+
+                commentsList.appendChild(newComment);
+
+                // Clear the textarea
+                commentInput.value = "";
+            }
+        }
+
+        function likeComment(button) {
+            let countSpan = button.querySelector("span");
+            let count = parseInt(countSpan.innerText);
+            countSpan.innerText = count + 1;
+        }
+
+        function dislikeComment(button) {
+            let countSpan = button.querySelector("span");
+            let count = parseInt(countSpan.innerText);
+            countSpan.innerText = count + 1;
+        }
+
+        function replyToComment(button) {
+            let replySection = button.parentElement.nextElementSibling;
+
+            if (!replySection.querySelector("textarea")) {
+                let replyInput = document.createElement("textarea");
+                replyInput.placeholder = "Write a reply...";
+                let replyButton = document.createElement("button");
+                replyButton.innerText = "Reply";
+                replyButton.onclick = function () {
+                    addReply(replyInput, replySection);
+                };
+
+                replySection.appendChild(replyInput);
+                replySection.appendChild(replyButton);
+            }
+        }
+
+        function addReply(replyInput, replySection) {
+            let replyText = replyInput.value.trim();
+
+            if (replyText !== "") {
+                let newReply = document.createElement("div");
+                newReply.classList.add("comment");
+                newReply.style.marginLeft = "20px";
+                newReply.innerHTML = `<p>${replyText}</p>`;
+
+                replySection.appendChild(newReply);
+                replyInput.value = ""; // Clear reply input
+            }
+        }
     </script>
 
 </body>
 </html>
+
 
 
 
