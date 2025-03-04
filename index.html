@@ -1001,32 +1001,28 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informatics & Data Blog</title>
+    <title>Informatics & Data Insights</title>
     <style>
-        /* General Styling */
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: #ffe8ef; /* Soft blush pink background */
+            background-color: #ffe8ef;
             color: black;
             margin: 0;
             padding: 0;
             text-align: center;
             overflow-x: hidden;
         }
-
-        /* Blog Section Styling */
         .blog-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
         }
-
         .blog-box {
             width: 90%;
             max-width: 500px;
@@ -1038,28 +1034,19 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             position: relative;
             margin-bottom: 20px;
         }
-
         .blog-box h3 {
             font-size: 18px;
             margin-bottom: 5px;
         }
-
         .blog-box a {
             text-decoration: none;
             color: #d63384;
             font-weight: bold;
         }
-
         .blog-box .blog-date {
             font-size: 12px;
             color: gray;
         }
-
-        /* Comment Section */
-        .comment-section {
-            margin-top: 10px;
-        }
-
         .comment-section textarea {
             width: 90%;
             padding: 8px;
@@ -1067,7 +1054,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             border: 1px solid #ccc;
             font-size: 14px;
         }
-
         .comment-section button {
             margin-top: 5px;
             padding: 6px 12px;
@@ -1078,12 +1064,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             cursor: pointer;
             font-size: 14px;
         }
-
-        .comments-list {
-            margin-top: 10px;
-            text-align: left;
-        }
-
         .comment {
             background: white;
             padding: 8px;
@@ -1093,11 +1073,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: relative;
         }
-
-        .comment-buttons {
-            margin-top: 5px;
-        }
-
         .comment-buttons button {
             background: none;
             border: none;
@@ -1106,141 +1081,38 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
             margin-right: 10px;
             color: gray;
         }
-
-        .reply-section {
-            margin-left: 20px;
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
-
-    <!-- Blog Section -->
-    <div class="blog-container">
-        <h2>📰 Informatics & Data Insights</h2>
-        <div class="blog-box">
-            <h3><a href="#" id="blog-title" target="_blank"></a></h3>
-            <p class="blog-date" id="blog-date"></p>
-            <p id="blog-content"></p>
-
-            <!-- Comment Section -->
-            <div class="comment-section">
-                <textarea id="comment-input" placeholder="Leave a comment..."></textarea>
-                <button onclick="addComment()">Post</button>
-                <div class="comments-list" id="comments-list"></div>
-            </div>
-        </div>
-    </div>
-
+    <div class="blog-container" id="blog-container"></div>
     <script>
-        // Blog Posts Array with External Links
         const blogPosts = [
-            { 
-                title: "How AI is Transforming Healthcare Data", 
-                date: "March 4, 2025", 
-                content: "AI is revolutionizing hospital workflows and patient outcomes.",
-                link: "https://www.healthcareitnews.com/ai-healthcare"
-            },
-            { 
-                title: "The Future of Data Security in Healthcare", 
-                date: "March 5, 2025", 
-                content: "Encryption and multi-factor authentication are key to protecting patient data.",
-                link: "https://www.healthdatamanagement.com/security"
-            },
-            { 
-                title: "Big Data in Public Health: A Game Changer", 
-                date: "March 6, 2025", 
-                content: "Tracking disease outbreaks and predicting trends with data-driven insights.",
-                link: "https://www.forbes.com/big-data-health"
-            }
+            { title: "How AI is Changing Data Intelligence", date: "March 4, 2025", link: "https://example.com/ai-data" },
+            { title: "The Future of Business Analytics", date: "March 4, 2025", link: "https://example.com/business-intelligence" },
+            { title: "Big Data & Public Health", date: "March 4, 2025", link: "https://example.com/public-health" },
+            { title: "Cloud Computing in Healthcare", date: "March 4, 2025", link: "https://example.com/cloud-healthcare" },
+            { title: "Cybersecurity in Data Science", date: "March 4, 2025", link: "https://example.com/cybersecurity" }
         ];
-
-        // Function to select daily blog post
-        function getDailyContent() {
-            let date = new Date();
-            let blogIndex = date.getDate() % blogPosts.length;
-
-            document.getElementById("blog-title").innerText = blogPosts[blogIndex].title;
-            document.getElementById("blog-title").href = blogPosts[blogIndex].link;
-            document.getElementById("blog-date").innerText = blogPosts[blogIndex].date;
-            document.getElementById("blog-content").innerText = blogPosts[blogIndex].content;
-        }
-
-        getDailyContent();
-
-        // Comment Section Functionality
-        function addComment() {
-            let commentInput = document.getElementById("comment-input");
-            let commentText = commentInput.value.trim();
-
-            if (commentText !== "") {
-                let commentsList = document.getElementById("comments-list");
-                let newComment = document.createElement("div");
-                newComment.classList.add("comment");
-
-                newComment.innerHTML = `
-                    <p>${commentText}</p>
-                    <div class="comment-buttons">
-                        <button onclick="likeComment(this)">👍 <span>0</span></button>
-                        <button onclick="dislikeComment(this)">👎 <span>0</span></button>
-                        <button onclick="replyToComment(this)">💬 Reply</button>
-                    </div>
-                    <div class="reply-section"></div>
+        
+        function displayArticles() {
+            let container = document.getElementById("blog-container");
+            container.innerHTML = "";
+            
+            blogPosts.forEach(post => {
+                let blogBox = document.createElement("div");
+                blogBox.classList.add("blog-box");
+                blogBox.innerHTML = `
+                    <h3><a href="${post.link}" target="_blank">${post.title}</a></h3>
+                    <p class="blog-date">${post.date}</p>
                 `;
-
-                commentsList.appendChild(newComment);
-
-                // Clear the textarea
-                commentInput.value = "";
-            }
+                container.appendChild(blogBox);
+            });
         }
-
-        function likeComment(button) {
-            let countSpan = button.querySelector("span");
-            let count = parseInt(countSpan.innerText);
-            countSpan.innerText = count + 1;
-        }
-
-        function dislikeComment(button) {
-            let countSpan = button.querySelector("span");
-            let count = parseInt(countSpan.innerText);
-            countSpan.innerText = count + 1;
-        }
-
-        function replyToComment(button) {
-            let replySection = button.parentElement.nextElementSibling;
-
-            if (!replySection.querySelector("textarea")) {
-                let replyInput = document.createElement("textarea");
-                replyInput.placeholder = "Write a reply...";
-                let replyButton = document.createElement("button");
-                replyButton.innerText = "Reply";
-                replyButton.onclick = function () {
-                    addReply(replyInput, replySection);
-                };
-
-                replySection.appendChild(replyInput);
-                replySection.appendChild(replyButton);
-            }
-        }
-
-        function addReply(replyInput, replySection) {
-            let replyText = replyInput.value.trim();
-
-            if (replyText !== "") {
-                let newReply = document.createElement("div");
-                newReply.classList.add("comment");
-                newReply.style.marginLeft = "20px";
-                newReply.innerHTML = `<p>${replyText}</p>`;
-
-                replySection.appendChild(newReply);
-                replyInput.value = ""; // Clear reply input
-            }
-        }
+        displayArticles();
     </script>
-
 </body>
 </html>
+
 
 
 
