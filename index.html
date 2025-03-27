@@ -1128,37 +1128,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
 
 
 
-<!-- LinkedIn Post Wrapper -->
-<div class="linkedin-container">
-    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7311154690665205760" 
-        class="linkedin-embed"
-        frameborder="0" allowfullscreen>
-    </iframe>
-</div>
-
-<!-- CSS Styling -->
-<style>
-    .linkedin-container {
-        width: 100%;
-        max-width: 400px; /* Adjust to fit nicely */
-        margin: 20px auto; /* Center the post */
-        padding: 10px;
-        background: radial-gradient(circle, #ffd9e6, #ffccdd); /* Soft pink gradient */
-        border: 5px solid #ffb6c1; /* Light pink border */
-        border-radius: 20px; /* Rounded corners */
-        box-shadow: 0 0 15px rgba(255, 182, 193, 0.7); /* Soft pink glow */
-        text-align: center;
-    }
-
-    .linkedin-embed {
-        width: 100%;
-        height: 400px; /* Adjust height to avoid bulkiness */
-        border-radius: 15px;
-        overflow: hidden;
-    }
-</style>
-
-
 
 
 <!-- LinkedIn Post Wrapper -->
@@ -1210,3 +1179,82 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
         right: 10px;
     }
 </style>
+
+
+
+<!-- LinkedIn Post Wrapper -->
+<div class="linkedin-container">
+    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7311164328240410625?collapsed=1" 
+        class="linkedin-embed"
+        frameborder="0" allowfullscreen>
+    </iframe>
+
+    <!-- Floating Hearts & Sparkles -->
+    <div class="floating-heart heart1">💖</div>
+    <div class="floating-heart heart2">💖</div>
+    <div class="floating-heart heart3">💖</div>
+    <div class="floating-sparkle sparkle1">✨</div>
+    <div class="floating-sparkle sparkle2">✨</div>
+    <div class="floating-sparkle sparkle3">✨</div>
+</div>
+
+<!-- CSS Styling -->
+<style>
+    .linkedin-container {
+        width: 90%; /* Responsive width */
+        max-width: 350px; /* Keeps it compact */
+        margin: 20px auto; /* Centered & nicely spaced */
+        padding: 15px;
+        background: radial-gradient(circle, #ffe0ec, #ffccdd); /* Soft pink gradient */
+        border: 4px solid #ffb6c1; /* Light pink border */
+        border-radius: 20px; /* Rounded edges */
+        box-shadow: 0 0 15px rgba(255, 150, 170, 0.6); /* Pink glow */
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .linkedin-embed {
+        width: 100%;
+        height: 350px; /* Compact height */
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    /* Floating Hearts */
+    .floating-heart {
+        position: absolute;
+        font-size: 18px;
+        opacity: 0.8;
+        animation: float 3s infinite alternate ease-in-out;
+    }
+
+    .heart1 { top: 5%; left: 10%; animation-delay: 0s; }
+    .heart2 { top: 50%; right: 10%; animation-delay: 1s; }
+    .heart3 { bottom: 10%; left: 40%; animation-delay: 2s; }
+
+    /* Floating Sparkles */
+    .floating-sparkle {
+        position: absolute;
+        font-size: 16px;
+        opacity: 0.7;
+        animation: twinkle 1.5s infinite alternate ease-in-out;
+    }
+
+    .sparkle1 { top: 15%; left: 80%; animation-delay: 0.5s; }
+    .sparkle2 { top: 60%; left: 20%; animation-delay: 1s; }
+    .sparkle3 { bottom: 5%; right: 30%; animation-delay: 1.5s; }
+
+    /* Heart Floating Animation */
+    @keyframes float {
+        from { transform: translateY(0px); opacity: 1; }
+        to { transform: translateY(-10px); opacity: 0.6; }
+    }
+
+    /* Sparkle Twinkling Animation */
+    @keyframes twinkle {
+        from { transform: scale(1); opacity: 0.5; }
+        to { transform: scale(1.2); opacity: 1; }
+    }
+</style>
+    
