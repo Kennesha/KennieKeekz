@@ -1258,3 +1258,89 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     }
 </style>
     
+
+
+
+
+
+
+    <!-- LinkedIn Section Container -->
+<div class="section-container">
+    <!-- First LinkedIn Post -->
+    <div class="linkedin-box">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7311154690665205760" 
+            class="linkedin-embed"
+            frameborder="0" allowfullscreen>
+        </iframe>
+        <div class="sparkle">✨</div>
+        <div class="heart">💖</div>
+    </div>
+
+    <!-- Second LinkedIn Post -->
+    <div class="linkedin-box">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7311164328240410625?collapsed=1" 
+            class="linkedin-embed"
+            frameborder="0" allowfullscreen>
+        </iframe>
+        <div class="sparkle">✨</div>
+        <div class="heart">💖</div>
+    </div>
+</div>
+
+<!-- CSS Styling -->
+<style>
+    /* Section Layout */
+    .section-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+
+    /* LinkedIn Post Box */
+    .linkedin-box {
+        width: 280px; /* Adjust as needed */
+        padding: 15px;
+        background: radial-gradient(circle, #ffe0ec, #ffccdd); /* Soft pink gradient */
+        border: 5px solid #ffb6c1; /* Light pink border */
+        border-radius: 20px;
+        box-shadow: 0 0 15px rgba(255, 150, 170, 0.6); /* Pink glow */
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    /* LinkedIn Embed */
+    .linkedin-embed {
+        width: 100%;
+        height: 350px; /* Compact but readable */
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    /* Sparkles & Hearts */
+    .sparkle, .heart {
+        position: absolute;
+        font-size: 16px;
+        opacity: 0.7;
+        animation: twinkle 1.5s infinite alternate ease-in-out;
+    }
+
+    .sparkle { top: 10px; left: 15px; }
+    .heart { bottom: 10px; right: 15px; }
+
+    /* Sparkle Twinkling Animation */
+    @keyframes twinkle {
+        from { transform: scale(1); opacity: 0.5; }
+        to { transform: scale(1.2); opacity: 1; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .section-container {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
