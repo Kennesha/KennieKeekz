@@ -1063,68 +1063,6 @@ As I continue to grow in the field, I’m committed to learning, gaining experie
     <!-- Blog Section -->
     <div class="blog-section">
         <h2 class="blog-title">✨ Health IT & Data Insights ✨</h2>
-        <div id="rss-feed" class="blog-container">
-            <p>Loading latest articles... 💖</p>
-        </div>
-    </div>
-
-    <script>
-        async function fetchRSSFeed() {
-            const rssUrls = [
-                "https://www.healthcareitnews.com/home/feed", // Healthcare IT News
-                "https://www.beckershospitalreview.com/healthcare-information-technology.html?format=feed", // Becker’s Health IT
-                "https://feeds.feedburner.com/SmartBrief/HealthIT", // Informatics SmartBrief
-            ];
-
-            const parser = new DOMParser();
-            let articles = [];
-
-            for (const url of rssUrls) {
-                try {
-                    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-                    const data = await response.json();
-                    const xml = parser.parseFromString(data.contents, "text/xml");
-
-                    const items = xml.querySelectorAll("item");
-                    items.forEach((item, index) => {
-                        if (index < 3) { // Limit articles per source
-                            articles.push({
-                                title: item.querySelector("title").textContent,
-                                link: item.querySelector("link").textContent,
-                                description: item.querySelector("description") ? item.querySelector("description").textContent : "",
-                            });
-                        }
-                    });
-                } catch (error) {
-                    console.error("Error fetching RSS feed:", error);
-                }
-            }
-
-            displayArticles(articles);
-        }
-
-        function displayArticles(articles) {
-            const rssContainer = document.getElementById("rss-feed");
-            rssContainer.innerHTML = ""; // Clear loading message
-
-            articles.forEach(article => {
-                const blogCard = document.createElement("div");
-                blogCard.classList.add("blog-card");
-
-                blogCard.innerHTML = `
-                    <h3><a href="${article.link}" target="_blank">${article.title}</a></h3>
-                    <p>${article.description.substring(0, 100)}...</p>
-                `;
-
-                rssContainer.appendChild(blogCard);
-            });
-        }
-
-        fetchRSSFeed();
-    </script>
-
-</body>
-</html>
 
     
 
